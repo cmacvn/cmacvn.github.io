@@ -264,6 +264,28 @@ a { color: inherit; }
 .path span { display: block; font: 800 1.125rem var(--f-head); color: var(--navy); }
 @media (max-width: 760px) { .leader { grid-template-columns: minmax(0, 1fr); } .leader-photo { max-width: 16rem; } }
 @media (max-width: 480px) { .path { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 1rem; } }
+
+/* ---------- Ngân hàng đồng hành ---------- */
+.banks { background: var(--paper); border-bottom: 1px solid var(--line); }
+.banks .wrap { display: grid; grid-template-columns: minmax(0, 16rem) minmax(0, 1fr); gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center; padding-block: clamp(2.25rem, 4vw, 3rem); }
+.banks h2 { font-size: 1.25rem; font-weight: 800; margin-top: .5rem; }
+.banks-intro p { margin-top: .5rem; font-size: .875rem; color: var(--muted); }
+.bank-grid { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: .75rem; }
+.bank-grid li { display: grid; place-items: center; height: 5.25rem; padding: .9rem 1rem; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); }
+.bank-grid li.fill { padding: 0; overflow: hidden; background: #623183; border-color: #623183; }
+.bank-grid img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; }
+.bank-grid li.fill img { width: 100%; height: 100%; max-height: none; object-fit: cover; }
+@media (max-width: 1000px) { .banks .wrap { grid-template-columns: minmax(0, 1fr); } .bank-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 480px) { .bank-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .bank-grid li { height: 4.5rem; } }
+
+/* ---------- Hoạt động tiêu biểu của CEO ---------- */
+.moments { margin-top: 1.5rem; display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: 1rem; }
+.moments figure { margin: 0; position: relative; overflow: hidden; border-radius: var(--radius); background: var(--choco); }
+.moments img { display: block; width: 100%; height: 100%; object-fit: cover; aspect-ratio: 3 / 2; }
+.moments figure:last-of-type img { aspect-ratio: auto; height: 100%; }
+.moments-cap { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: .25rem 1rem; align-items: baseline; padding-top: .25rem; font-size: .875rem; color: var(--muted); }
+.moments-cap b { font: 700 .9375rem var(--f-head); color: var(--navy); }
+@media (max-width: 760px) { .moments { grid-template-columns: minmax(0, 1fr); } .moments figure:last-of-type img { aspect-ratio: 4 / 3; } }
 .partners { margin-top: 3.5rem; }
 .partners h3 { font-size: 1.25rem; font-weight: 800; }
 .partners > p { margin-top: .5rem; max-width: 46rem; }
@@ -377,6 +399,25 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--bronze-hi);
           <li><b>Nên làm gì tiếp theo?</b><span>Quyết định dựa trên dữ liệu, phân tích và kịch bản tài chính.</span></li>
         </ul>
       </aside>
+    </div>
+  </section>
+
+  <!-- NGÂN HÀNG ĐỒNG HÀNH -->
+  <section class="banks" aria-labelledby="bank-title">
+    <div class="wrap">
+      <div class="banks-intro">
+        <p class="kicker">Đối tác</p>
+        <h2 id="bank-title">Ngân hàng đồng hành</h2>
+        <p>Quan hệ làm việc với các ngân hàng giúp CMAC hỗ trợ khách hàng trong cấu trúc khoản vay và huy động vốn.</p>
+      </div>
+      <ul class="bank-grid">
+        <li><img src="assets/banks/vietinbank.png" alt="VietinBank" width="420" height="112" loading="lazy"></li>
+        <li><img src="assets/banks/bidv.png" alt="BIDV" width="280" height="120" loading="lazy"></li>
+        <li><img src="assets/banks/techcombank.png" alt="Techcombank" width="261" height="120" loading="lazy"></li>
+        <li><img src="assets/banks/vpbank.png" alt="VPBank" width="420" height="103" loading="lazy"></li>
+        <li><img src="assets/banks/mb.png" alt="MB" width="280" height="120" loading="lazy"></li>
+        <li class="fill"><img src="assets/banks/tpbank.png" alt="TPBank" width="185" height="120" loading="lazy"></li>
+      </ul>
     </div>
   </section>
 
@@ -582,6 +623,12 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--bronze-hi);
           </ol>
         </div>
       </article>
+
+      <div class="moments" role="group" aria-labelledby="moments-title">
+        <figure><img src="assets/ceo-hoi-nghi-ky-ket.jpg" alt="Ông Ngô Tấn Quang ký kết tại Hội nghị Khơi thông dòng vốn – Đồng hành cùng Đà Nẵng tăng trưởng" width="1600" height="1066" loading="lazy"></figure>
+        <figure><img src="assets/ceo-hoi-nghi-bat-tay.jpg" alt="Ông Ngô Tấn Quang bắt tay trao văn bản ký kết tại hội nghị" width="1200" height="900" loading="lazy"></figure>
+        <p class="moments-cap" id="moments-title"><b>Hội nghị “Khơi thông dòng vốn – Đồng hành cùng Đà Nẵng tăng trưởng”</b><span>UBND thành phố Đà Nẵng · 08/10/2026</span></p>
+      </div>
 
       <div class="partners">
         <h3>Mạng lưới đối tác chuyên môn</h3>
