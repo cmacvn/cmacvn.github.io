@@ -25,7 +25,7 @@ Theo *CMAC Brand Guideline 2026*: Đồng Cổ `#8C654A`, Navy `#1B2A41`, Sô-c�
 
 ## Tên miền
 
-Khi trỏ tên miền `cmac.vn` về GitHub Pages: thêm file `CNAME` chứa `cmac.vn` và cấu hình DNS theo hướng dẫn của GitHub Pages.
+Website chạy tại **https://cmac.vn** (GitHub Pages, file `CNAME`). DNS quản lý tại Vinahost: 4 bản ghi A trỏ `185.199.108-111.153`, CNAME `www` → `cmacvn.github.io`, TXT xác minh `_github-pages-challenge-cmacvn`.
 
 ---
 © 2026 CMAC Co., Ltd. · MSDN 4001340408 · 814 Trần Hưng Đạo, P. Điện Bàn Đông, TP. Đà Nẵng
