@@ -279,14 +279,13 @@ a { color: inherit; }
 @media (max-width: 480px) { .bank-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .bank-grid li { height: 4.5rem; } }
 
 /* ---------- Hoạt động tiêu biểu của CEO ---------- */
-.moments { margin-top: 1.5rem; display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: 1rem; }
-.moments figure { margin: 0; position: relative; overflow: hidden; border-radius: var(--radius); background: var(--choco); }
-.moments img { display: block; width: 100%; height: 100%; object-fit: cover; aspect-ratio: 3 / 2; }
-.moments figure:last-of-type img { aspect-ratio: auto; height: 100%; }
+.moments { margin-top: 1.5rem; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.moments figure { margin: 0; overflow: hidden; border-radius: var(--radius); background: var(--choco); }
+.moments img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; object-position: 50% 60%; }
 .moments-cap { grid-column: 1 / -1; display: grid; gap: .35rem; padding: .25rem 0 0 1rem; border-left: 3px solid var(--bronze); }
 .moments-cap b { font: 700 .9375rem/1.4 var(--f-head); color: var(--navy); }
 .moments-cap p { font-size: .875rem; color: var(--muted); max-width: 60rem; }
-@media (max-width: 760px) { .moments { grid-template-columns: minmax(0, 1fr); } .moments figure:last-of-type img { aspect-ratio: 4 / 3; } }
+@media (max-width: 760px) { .moments { grid-template-columns: minmax(0, 1fr); } }
 .partners { margin-top: 3.5rem; }
 .partners h3 { font-size: 1.25rem; font-weight: 800; }
 .partners > p { margin-top: .5rem; max-width: 46rem; }
