@@ -283,8 +283,9 @@ a { color: inherit; }
 .moments figure { margin: 0; position: relative; overflow: hidden; border-radius: var(--radius); background: var(--choco); }
 .moments img { display: block; width: 100%; height: 100%; object-fit: cover; aspect-ratio: 3 / 2; }
 .moments figure:last-of-type img { aspect-ratio: auto; height: 100%; }
-.moments-cap { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: .25rem 1rem; align-items: baseline; padding-top: .25rem; font-size: .875rem; color: var(--muted); }
-.moments-cap b { font: 700 .9375rem var(--f-head); color: var(--navy); }
+.moments-cap { grid-column: 1 / -1; display: grid; gap: .35rem; padding: .25rem 0 0 1rem; border-left: 3px solid var(--bronze); }
+.moments-cap b { font: 700 .9375rem/1.4 var(--f-head); color: var(--navy); }
+.moments-cap p { font-size: .875rem; color: var(--muted); max-width: 60rem; }
 @media (max-width: 760px) { .moments { grid-template-columns: minmax(0, 1fr); } .moments figure:last-of-type img { aspect-ratio: 4 / 3; } }
 .partners { margin-top: 3.5rem; }
 .partners h3 { font-size: 1.25rem; font-weight: 800; }
@@ -625,9 +626,12 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--bronze-hi);
       </article>
 
       <div class="moments" role="group" aria-labelledby="moments-title">
-        <figure><img src="assets/ceo-hoi-nghi-ky-ket.jpg" alt="Ông Ngô Tấn Quang ký kết tại Hội nghị Khơi thông dòng vốn – Đồng hành cùng Đà Nẵng tăng trưởng" width="1600" height="1066" loading="lazy"></figure>
-        <figure><img src="assets/ceo-hoi-nghi-bat-tay.jpg" alt="Ông Ngô Tấn Quang bắt tay trao văn bản ký kết tại hội nghị" width="1200" height="900" loading="lazy"></figure>
-        <p class="moments-cap" id="moments-title"><b>Hội nghị “Khơi thông dòng vốn – Đồng hành cùng Đà Nẵng tăng trưởng”</b><span>UBND thành phố Đà Nẵng · 08/10/2026</span></p>
+        <figure><img src="assets/ceo-hoi-nghi-ky-ket.jpg" alt="Ông Ngô Tấn Quang cùng lãnh đạo thành phố Đà Nẵng và các sở, ban, ngành tại Hội nghị Khơi thông dòng vốn – Đồng hành cùng Đà Nẵng tăng trưởng" width="1600" height="1066" loading="lazy"></figure>
+        <figure><img src="assets/ceo-hoi-nghi-bat-tay.jpg" alt="Ông Ngô Tấn Quang tại Hội nghị Khơi thông dòng vốn – Đồng hành cùng Đà Nẵng tăng trưởng" width="1200" height="900" loading="lazy"></figure>
+        <div class="moments-cap" id="moments-title">
+          <b>Hội nghị “Khơi thông dòng vốn – Đồng hành cùng Đà Nẵng tăng trưởng” · 08/10/2026</b>
+          <p>Ông Ngô Tấn Quang cùng lãnh đạo UBND thành phố Đà Nẵng và các sở, ban, ngành. Hội nghị do Phó Thống đốc Thường trực Ngân hàng Nhà nước Việt Nam Đoàn Thái Sơn và ông Nguyễn Mạnh Hùng, Phó Bí thư Thành ủy, Chủ tịch UBND thành phố Đà Nẵng đồng chủ trì; UBND thành phố Đà Nẵng và Ngân hàng Nhà nước Việt Nam – Chi nhánh Khu vực 9 phối hợp tổ chức.</p>
+        </div>
       </div>
 
       <div class="partners">
