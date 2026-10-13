@@ -272,9 +272,7 @@ a { color: inherit; }
 .banks-intro p { margin-top: .5rem; font-size: .875rem; color: var(--muted); }
 .bank-grid { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: .75rem; }
 .bank-grid li { display: grid; place-items: center; height: 5.25rem; padding: .9rem 1rem; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); }
-.bank-grid li.fill { padding: 0; overflow: hidden; background: #623183; border-color: #623183; }
 .bank-grid img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; }
-.bank-grid li.fill img { width: 100%; height: 100%; max-height: none; object-fit: cover; }
 @media (max-width: 1000px) { .banks .wrap { grid-template-columns: minmax(0, 1fr); } .bank-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 480px) { .bank-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .bank-grid li { height: 4.5rem; } }
 
@@ -412,11 +410,11 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--bronze-hi);
       </div>
       <ul class="bank-grid">
         <li><img src="assets/banks/vietinbank.png" alt="VietinBank" width="420" height="112" loading="lazy"></li>
-        <li><img src="assets/banks/bidv.png" alt="BIDV" width="280" height="120" loading="lazy"></li>
+        <li><img src="assets/banks/bidv.png" alt="BIDV" width="352" height="120" loading="lazy"></li>
         <li><img src="assets/banks/techcombank.png" alt="Techcombank" width="261" height="120" loading="lazy"></li>
         <li><img src="assets/banks/vpbank.png" alt="VPBank" width="420" height="103" loading="lazy"></li>
         <li><img src="assets/banks/mb.png" alt="MB" width="280" height="120" loading="lazy"></li>
-        <li class="fill"><img src="assets/banks/tpbank.png" alt="TPBank" width="185" height="120" loading="lazy"></li>
+        <li><img src="assets/banks/pvcombank.png" alt="PVcomBank" width="232" height="120" loading="lazy"></li>
       </ul>
     </div>
   </section>
