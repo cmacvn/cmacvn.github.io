@@ -1,0 +1,762 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="CMAC – Đối tác Tài chính &amp; Quản trị cho tăng trưởng bền vững: Kế toán – Thuế, Quản trị tài chính, CFO thuê ngoài và Tài chính doanh nghiệp tại Đà Nẵng.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="vi_VN">
+<meta property="og:title" content="CMAC – Vững Tài chính. Mạnh Tương Lai.">
+<meta property="og:description" content="CMAC – Đối tác Tài chính &amp; Quản trị cho tăng trưởng bền vững: Kế toán – Thuế, Quản trị tài chính, CFO thuê ngoài và Tài chính doanh nghiệp tại Đà Nẵng.">
+<meta property="og:image" content="assets/cmac-logo.png">
+<meta name="theme-color" content="#2A1F1A">
+<link rel="icon" type="image/png" href="assets/cmac-mark.png">
+<title>CMAC – Tư vấn Tài chính &amp; Quản trị | Vững Tài chính. Mạnh Tương Lai.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@600;700;800&display=swap">
+<style>
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+/* Layout: website một trang, căn trái. Nền Kem cho nội dung, khối Sô-cô-la cho hero/CTA (logo đồng chỉ đặt trên nền sáng theo Brand Guideline 2026).
+   Điểm nhấn duy nhất: "Hệ sinh thái 4 tầng" vẽ thành bậc núi đi lên, lặp lại hình núi của biểu tượng M–A.
+   Một theme cố định theo bộ nhận diện CMAC (60% nền trung tính · 30% Navy · 10% Đồng). */
+:root {
+  color-scheme: light;
+  --choco: #2A1F1A;
+  --choco-hi: #3A2C24;
+  --choco-card: #33261F;
+  --cream: #F5F1EC;
+  --paper: #FBF9F6;
+  --navy: #1B2A41;
+  --navy-2: #24364F;
+  --bronze: #8C654A;
+  --bronze-hi: #A78260;
+  --bronze-lo: #67482E;
+  --gold: #C9A47F;
+  --sand: #D9CFC4;
+  --taupe: #B8AA9C;
+  --charcoal: #333333;
+  --muted: #6B6B6B;
+  --line: #DDD3C8;
+
+  --f-head: "Montserrat", "Segoe UI", system-ui, sans-serif;
+  --f-body: "Inter", "Segoe UI", system-ui, sans-serif;
+
+  --t-sm: .875rem;
+  --t-base: 1rem;
+  --t-lg: 1.1875rem;
+  --t-h3: 1.25rem;
+  --t-h2: clamp(1.75rem, 1.25rem + 1.9vw, 2.5rem);
+  --t-h1: clamp(2.375rem, 1.4rem + 3.8vw, 4rem);
+
+  --wrap: 74rem;
+  --gutter: clamp(16px, 4vw, 40px);
+  --radius: 6px;
+  --shadow: 0 2px 16px rgba(42, 31, 26, .08);
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--cream); color: var(--charcoal);
+  font-family: var(--f-body); font-size: var(--t-base); line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; animation: none !important; } }
+h1, h2, h3, h4 { font-family: var(--f-head); color: var(--navy); line-height: 1.2; margin: 0; text-wrap: balance; }
+p, ul, ol, dl, dd { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--bronze); outline-offset: 3px; border-radius: 2px; }
+.wrap { max-width: var(--wrap); margin-inline: auto; padding-inline: var(--gutter); }
+.num { font-variant-numeric: tabular-nums; }
+
+/* nhãn phần: chữ hoa giãn, màu Đồng (theo template CMAC), dùng tiết chế */
+.kicker { font-family: var(--f-head); font-weight: 700; font-size: .8125rem; letter-spacing: .14em; text-transform: uppercase; color: var(--bronze); }
+.rule { width: 4.5rem; height: 3px; background: var(--bronze); border: 0; margin: 1.25rem 0 0; }
+.sec { padding-block: clamp(4rem, 8vw, 6.5rem); scroll-margin-top: 4.5rem; }
+.sec-head { max-width: 46rem; }
+.sec-head h2 { font-size: var(--t-h2); font-weight: 800; margin-top: .75rem; }
+.sec-head > p { margin-top: 1.25rem; font-size: var(--t-lg); }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  font-family: var(--f-head); font-weight: 700; font-size: .9375rem;
+  min-height: 2.875rem; padding: 0 1.4rem; border-radius: 4px; border: 1px solid transparent;
+  text-decoration: none; cursor: pointer; transition: background-color .18s, border-color .18s, color .18s;
+}
+.btn-bronze { background: var(--bronze); color: #fff; }
+.btn-bronze:hover { background: var(--bronze-lo); }
+.btn-line { border-color: rgba(217,207,196,.5); color: var(--cream); background: transparent; }
+.btn-line:hover { border-color: var(--bronze-hi); }
+
+/* ---------- Header (nền sáng để đặt logo đồng gốc) ---------- */
+.site-head { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: rgba(251, 249, 246, .96); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); }
+.site-head .wrap { display: flex; align-items: center; gap: 1.75rem; min-height: 4.5rem; }
+.brand { display: block; line-height: 0; }
+.brand img { height: 46px; width: auto; }
+.nav { display: flex; gap: 1.6rem; margin-left: auto; }
+.nav a { font-family: var(--f-head); font-weight: 600; font-size: .875rem; color: var(--navy); text-decoration: none; padding-block: .5rem; border-bottom: 2px solid transparent; }
+.nav a:hover { border-bottom-color: var(--bronze); }
+.head-cta { min-height: 2.5rem; font-size: .875rem; }
+.menu-btn { display: none; margin-left: auto; background: none; border: 1px solid var(--line); color: var(--navy); border-radius: 4px; min-height: 2.75rem; padding: 0 1rem; font: 600 .875rem var(--f-head); cursor: pointer; }
+@media (max-width: 900px) {
+  .nav, .head-cta { display: none; }
+  .menu-btn { display: inline-flex; align-items: center; }
+  .nav.open { display: flex; position: absolute; left: 0; right: 0; top: 100%; flex-direction: column; gap: 0; background: var(--paper); padding: .25rem var(--gutter) 1rem; border-bottom: 1px solid var(--line); box-shadow: var(--shadow); }
+  .nav.open a { padding-block: .85rem; border-bottom: 1px solid var(--line); }
+  .brand img { height: 40px; }
+}
+
+/* ---------- Khối tối ---------- */
+.dark { position: relative; color: var(--sand); background: radial-gradient(120% 95% at 30% 70%, var(--choco-hi) 0%, #302520 52%, var(--choco) 100%); }
+.dark::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 6px; background: linear-gradient(var(--bronze-hi), var(--bronze), var(--bronze-lo)); }
+.dark h1, .dark h2, .dark h3 { color: var(--cream); }
+.dark .kicker { color: var(--bronze-hi); }
+
+/* ---------- Hero ---------- */
+.hero .wrap { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: clamp(2.5rem, 6vw, 5rem); padding-block: clamp(3.5rem, 8vw, 6.5rem); align-items: center; }
+.hero h1 { font-size: var(--t-h1); font-weight: 800; letter-spacing: -.015em; margin-top: 1.1rem; }
+.hero .en { display: block; margin-top: .9rem; font: italic 400 clamp(1.05rem, .9rem + .6vw, 1.375rem)/1.4 var(--f-body); color: var(--taupe); letter-spacing: 0; }
+.hero .rule { margin-top: 1.75rem; }
+.hero-lede { margin-top: 1.5rem; font-size: var(--t-lg); max-width: 36rem; }
+.hero-lede strong { color: var(--cream); font-weight: 600; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2.25rem; }
+
+.questions { background: var(--choco-card); border: 1px solid rgba(167,130,96,.4); border-radius: var(--radius); padding: clamp(1.25rem, 3vw, 2rem); min-width: 0; }
+.questions h2 { font-size: 1.0625rem; font-weight: 700; color: var(--gold); letter-spacing: .01em; }
+.questions ul { list-style: none; padding: 0; margin-top: .5rem; display: grid; }
+.questions li { padding-block: 1rem; border-top: 1px solid rgba(167,130,96,.22); }
+.questions li:first-child { border-top: 0; }
+.questions b { display: block; font: 700 1.1875rem/1.3 var(--f-head); color: var(--cream); }
+.questions span { display: block; margin-top: .3rem; font-size: .9375rem; color: var(--taupe); }
+@media (max-width: 900px) { .hero .wrap { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- Cam kết ---------- */
+.promise .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: clamp(2rem, 6vw, 5rem); align-items: start; }
+.shift { margin-top: 2rem; display: grid; gap: 1rem; }
+.shift p { padding: 1rem 1.25rem; border-radius: var(--radius); font-size: var(--t-lg); }
+.shift .from { color: var(--muted); background: transparent; border: 1px dashed var(--line); text-decoration: line-through; text-decoration-color: rgba(140,101,74,.6); }
+.shift .to { background: var(--navy); color: var(--cream); font-weight: 500; }
+.pillars { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+.pillar { background: var(--paper); padding: 1.6rem 1.5rem; }
+.pillar .en { font: 700 .8125rem var(--f-head); color: var(--bronze); letter-spacing: .08em; text-transform: uppercase; }
+.pillar h3 { font-size: var(--t-h3); font-weight: 800; margin-top: .35rem; }
+.pillar p { margin-top: .6rem; font-size: .9375rem; }
+@media (max-width: 900px) { .promise .wrap { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 520px) { .pillars { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- Hệ sinh thái 4 tầng ---------- */
+.eco { background: var(--paper); border-block: 1px solid var(--line); }
+.logic { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .75rem; margin-top: 1.5rem; font: 600 .9375rem var(--f-head); color: var(--navy); }
+.logic i { font-style: normal; color: var(--bronze); }
+.eco-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr); gap: clamp(2rem, 5vw, 4rem); margin-top: 3rem; align-items: stretch; }
+.peaks { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); align-items: end; gap: .6rem; min-height: 22rem; padding-bottom: 0; border-bottom: 3px solid var(--navy); }
+.peak {
+  position: relative; display: flex; flex-direction: column; justify-content: flex-start; gap: .35rem;
+  border: 0; cursor: pointer; text-align: left; padding: .9rem .75rem; border-radius: 4px 4px 0 0;
+  background: var(--sand); color: var(--navy); font-family: var(--f-head); transition: background-color .2s, color .2s;
+}
+.peak:nth-child(1) { height: 40%; } .peak:nth-child(2) { height: 58%; } .peak:nth-child(3) { height: 78%; } .peak:nth-child(4) { height: 100%; }
+.peak small { font-weight: 700; font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: var(--bronze-lo); }
+.peak strong { font-weight: 800; font-size: clamp(.8125rem, .7rem + .45vw, 1.0625rem); line-height: 1.25; }
+.peak:hover { background: #E6DDD2; }
+.peak[aria-selected="true"] { background: var(--navy); color: var(--cream); }
+.peak[aria-selected="true"] small { color: var(--gold); }
+.peak[aria-selected="true"]::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 4px; background: var(--bronze); border-radius: 4px 4px 0 0; }
+.tier { background: var(--cream); border-radius: var(--radius); padding: clamp(1.4rem, 3vw, 2.25rem); min-width: 0; }
+.tier-top { display: flex; flex-wrap: wrap; align-items: baseline; gap: .5rem 1rem; }
+.tier h3 { font-size: 1.5rem; font-weight: 800; }
+.tier .goal { font: 700 .8125rem var(--f-head); letter-spacing: .1em; text-transform: uppercase; color: var(--bronze); }
+.tier > p { margin-top: .75rem; }
+.svc-list { list-style: none; padding: 0; margin-top: 1.5rem; display: grid; gap: 0; }
+.svc-list li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .25rem 1.25rem; padding-block: 1rem; border-top: 1px solid var(--line); }
+.svc-list b { font: 700 1.0625rem/1.35 var(--f-head); color: var(--navy); }
+.svc-list p { grid-column: 1; font-size: .9375rem; }
+.svc-list .fee { grid-column: 2; grid-row: 1; align-self: start; font: 600 .75rem var(--f-head); color: var(--bronze-lo); background: #EDE4D9; border-radius: 999px; padding: .25rem .65rem; white-space: nowrap; }
+@media (max-width: 900px) { .eco-grid { grid-template-columns: minmax(0, 1fr); } .peaks { min-height: 15rem; } }
+@media (max-width: 480px) { .peak { padding: .6rem .45rem; } .peak small { letter-spacing: .06em; } .svc-list li { grid-template-columns: minmax(0, 1fr); } .svc-list .fee { grid-column: 1; grid-row: auto; justify-self: start; } }
+
+/* ---------- CFO thuê ngoài ---------- */
+.cfo-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; margin-top: 3rem; }
+.pkg { background: var(--paper); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.75rem 1.5rem; display: flex; flex-direction: column; gap: .75rem; border-top: 4px solid var(--sand); }
+.pkg.mid { border-top-color: var(--bronze); }
+.pkg.top { background: var(--navy); color: var(--sand); border-top-color: var(--gold); }
+.pkg.top h3 { color: var(--cream); }
+.pkg .tag { font: 700 .75rem var(--f-head); letter-spacing: .1em; text-transform: uppercase; color: var(--bronze); }
+.pkg.top .tag { color: var(--gold); }
+.pkg h3 { font-size: 1.5rem; font-weight: 800; }
+.pkg .for { font-size: .9375rem; color: var(--muted); }
+.pkg.top .for { color: var(--taupe); }
+.pkg ul { padding-left: 1.1rem; display: grid; gap: .45rem; font-size: .9375rem; margin-top: .25rem; }
+.pkg li::marker { color: var(--bronze); }
+.pkg.top li::marker { color: var(--gold); }
+.cfo-note { margin-top: 1.5rem; font-size: .875rem; color: var(--muted); max-width: 52rem; }
+@media (max-width: 900px) { .cfo-grid { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- Khách hàng ---------- */
+.clients { border-top: 1px solid var(--line); }
+.client-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 2.5rem; margin-top: 2.5rem; }
+.client { padding-block: 1.5rem; border-top: 1px solid var(--line); }
+.client h3 { font-size: 1.125rem; font-weight: 700; }
+.client p { margin-top: .5rem; font-size: .9375rem; }
+@media (max-width: 900px) { .client-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .client-grid { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- Giá trị C.M.A.C ---------- */
+.values { background: var(--navy); color: var(--sand); }
+.values .kicker { color: var(--gold); }
+.values h2 { color: var(--cream); }
+.values .sec-head > p { color: var(--sand); }
+.acrostic { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 3rem; border-top: 1px solid rgba(201,164,127,.35); }
+.letter { padding: 1.75rem 1.5rem 0 0; }
+.letter + .letter { padding-left: 1.5rem; border-left: 1px solid rgba(201,164,127,.25); }
+.letter .big { display: block; font: 800 clamp(4rem, 3rem + 4vw, 6.5rem)/0.9 var(--f-head); color: var(--bronze-hi); letter-spacing: -.02em; }
+.letter h3 { color: var(--cream); font-size: 1.125rem; font-weight: 700; margin-top: 1rem; }
+.letter h3 span { display: block; font: 600 .75rem var(--f-head); color: var(--gold); letter-spacing: .12em; text-transform: uppercase; margin-bottom: .3rem; }
+.letter p { margin-top: .6rem; font-size: .9375rem; }
+@media (max-width: 900px) { .acrostic { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 2rem; } .letter:nth-child(3) { padding-left: 0; border-left: 0; } }
+@media (max-width: 480px) { .acrostic { grid-template-columns: minmax(0, 1fr); } .letter + .letter { padding-left: 0; border-left: 0; } }
+
+/* ---------- Quy trình ---------- */
+.steps { list-style: none; padding: 0; margin-top: 3rem; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 1.25rem; counter-reset: s; position: relative; }
+.steps::before { content: ""; position: absolute; top: 1.4rem; left: 1.4rem; right: 8%; height: 2px; background: var(--bronze-hi); opacity: .5; }
+.steps li { position: relative; counter-increment: s; min-width: 0; }
+.steps li::before { content: counter(s, decimal-leading-zero); position: relative; display: grid; place-items: center; width: 2.8rem; height: 2.8rem; border-radius: 50%; background: var(--bronze); color: #fff; font: 700 .9375rem var(--f-head); border: 3px solid var(--cream); }
+.steps li:last-child::before { background: var(--navy); }
+.steps h3 { font-size: 1.0625rem; font-weight: 700; margin-top: 1rem; }
+.steps .time { display: block; font: 600 .8125rem var(--f-head); color: var(--bronze); margin-top: .25rem; }
+.steps p { font-size: .9375rem; margin-top: .4rem; }
+@media (max-width: 1000px) {
+  .steps { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .steps::before { top: 1.4rem; bottom: 1.4rem; left: 1.4rem; right: auto; width: 2px; height: auto; }
+  .steps li { display: grid; grid-template-columns: 2.8rem minmax(0, 1fr); column-gap: 1.1rem; padding-bottom: 1.6rem; }
+  .steps li::before { grid-row: span 3; }
+  .steps h3 { margin-top: .55rem; }
+}
+
+/* ---------- Về CMAC ---------- */
+.about { background: var(--paper); border-block: 1px solid var(--line); }
+.about-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: clamp(2rem, 6vw, 5rem); margin-top: 3rem; }
+.mv { display: grid; gap: 1.75rem; }
+.mv h3 { font-size: 1.125rem; font-weight: 700; }
+.mv p { margin-top: .5rem; }
+.mv .en { margin-top: .4rem; font-style: italic; color: var(--muted); font-size: .9375rem; }
+.symbol { display: grid; grid-template-columns: 9.5rem minmax(0, 1fr); gap: 1.5rem; align-items: start; }
+.symbol img { width: 100%; height: auto; }
+.symbol p { font-size: .9375rem; }
+.symbol p + p { margin-top: .6rem; }
+.leader { margin-top: 3.5rem; display: grid; grid-template-columns: minmax(0, 18rem) minmax(0, 1fr); gap: clamp(1.5rem, 4vw, 3.5rem); align-items: start; padding: clamp(1.25rem, 3vw, 2rem); background: var(--cream); border-radius: var(--radius); }
+.leader-photo { margin: 0; position: relative; }
+.leader-photo img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 4px; }
+.leader-photo::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 4px; background: linear-gradient(90deg, var(--bronze-hi), var(--bronze), var(--bronze-lo)); border-radius: 0 0 4px 4px; }
+.leader .role { font: 600 .8125rem var(--f-head); color: var(--bronze); letter-spacing: .08em; text-transform: uppercase; }
+.leader h3 { font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem); font-weight: 800; margin-top: .4rem; }
+.leader-title { font: 600 1rem var(--f-head); color: var(--bronze-lo); margin-top: .25rem; }
+.leader-bio { margin-top: 1rem; max-width: 40rem; }
+.creds { list-style: none; padding: 0; margin-top: 1.25rem; display: flex; flex-wrap: wrap; gap: .5rem; }
+.creds li { background: var(--navy); color: var(--cream); border-radius: 999px; padding: .35rem .85rem; font: 600 .8125rem var(--f-head); }
+.path { list-style: none; padding: 0; margin-top: 1.5rem; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 2px solid var(--line); }
+.path li { padding-top: .75rem; position: relative; font-size: .875rem; color: var(--charcoal); }
+.path li::before { content: ""; position: absolute; top: -7px; left: 0; width: 12px; height: 12px; border-radius: 50%; background: var(--bronze); border: 2px solid var(--cream); }
+.path li:last-child::before { background: var(--navy); }
+.path span { display: block; font: 800 1.125rem var(--f-head); color: var(--navy); }
+@media (max-width: 760px) { .leader { grid-template-columns: minmax(0, 1fr); } .leader-photo { max-width: 16rem; } }
+@media (max-width: 480px) { .path { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 1rem; } }
+.partners { margin-top: 3.5rem; }
+.partners h3 { font-size: 1.25rem; font-weight: 800; }
+.partners > p { margin-top: .5rem; max-width: 46rem; }
+.partner-list { list-style: none; padding: 0; margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: .6rem; }
+.partner-list li { background: var(--cream); border: 1px solid var(--line); border-radius: 999px; padding: .45rem 1rem; font: 600 .875rem var(--f-head); color: var(--navy); }
+.legal-card { margin-top: 3.5rem; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem 2rem; padding: 1.5rem; background: var(--cream); border-radius: var(--radius); }
+.legal-card dt { font: 600 .75rem var(--f-head); color: var(--muted); letter-spacing: .06em; text-transform: uppercase; }
+.legal-card dd { margin-top: .3rem; font-weight: 600; color: var(--navy); font-size: .9375rem; overflow-wrap: anywhere; }
+@media (max-width: 900px) { .about-grid { grid-template-columns: minmax(0, 1fr); } .legal-card { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 480px) { .symbol { grid-template-columns: 6.5rem minmax(0, 1fr); gap: 1rem; } .legal-card { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- Liên hệ ---------- */
+.contact .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(2.5rem, 6vw, 5rem); padding-block: clamp(4rem, 8vw, 6rem); }
+.contact h2 { font-size: var(--t-h2); font-weight: 800; margin-top: .75rem; }
+.contact .lede { margin-top: 1.25rem; font-size: var(--t-lg); }
+.channels { margin-top: 2.25rem; display: grid; gap: 1.4rem; }
+.ch-label { font-size: .8125rem; font-weight: 600; color: var(--bronze-hi); }
+.ch-row { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; margin-top: .2rem; }
+.ch-val { font: 700 1.25rem/1.35 var(--f-head); color: var(--cream); user-select: all; overflow-wrap: anywhere; }
+.ch-val.sm { font-size: 1rem; font-weight: 600; user-select: text; }
+.copy { background: none; border: 1px solid rgba(217,207,196,.35); color: var(--sand); border-radius: 4px; font: 600 .75rem var(--f-head); min-height: 2.25rem; padding: 0 .75rem; cursor: pointer; }
+.copy:hover { border-color: var(--bronze-hi); color: var(--cream); }
+form { background: var(--choco-card); border: 1px solid rgba(167,130,96,.35); border-radius: var(--radius); padding: clamp(1.25rem, 3vw, 2rem); display: grid; gap: 1rem; min-width: 0; }
+form h3 { font-size: 1.125rem; font-weight: 700; }
+.row2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+@media (max-width: 560px) { .row2 { grid-template-columns: minmax(0, 1fr); } }
+.field { display: grid; gap: .35rem; min-width: 0; }
+label { font-size: .875rem; font-weight: 600; color: var(--cream); }
+.hint { font-weight: 400; color: var(--taupe); font-size: .75rem; }
+input, select, textarea { width: 100%; font: inherit; color: var(--cream); background: rgba(42,31,26,.7); border: 1px solid rgba(184,170,156,.4); border-radius: 4px; padding: .7rem .8rem; min-height: 2.875rem; color-scheme: dark; }
+textarea { min-height: 6.5rem; resize: vertical; }
+input:focus, select:focus, textarea:focus { outline: 2px solid var(--bronze-hi); outline-offset: 0; border-color: transparent; }
+.err { font-size: .8125rem; color: #F2B8A0; }
+[aria-invalid="true"] { border-color: #E08F6E; }
+.result { border-top: 1px solid rgba(167,130,96,.35); padding-top: 1rem; display: grid; gap: .75rem; }
+.result p { font-size: .875rem; }
+.result pre { margin: 0; white-space: pre-wrap; font: .875rem/1.55 var(--f-body); color: var(--sand); background: rgba(42,31,26,.7); border-radius: 4px; padding: .9rem; max-height: 15rem; overflow: auto; }
+@media (max-width: 900px) { .contact .wrap { grid-template-columns: minmax(0, 1fr); } }
+
+/* ---------- Footer (nền sáng, logo đồng) ---------- */
+.foot { background: var(--paper); border-top: 1px solid var(--line); font-size: .875rem; color: var(--muted); }
+.foot-top { display: grid; grid-template-columns: minmax(0, 1.3fr) repeat(2, minmax(0, 1fr)); gap: 2rem; padding-block: 3rem 2rem; }
+.foot-top img { width: 220px; max-width: 100%; height: auto; }
+.foot-top .one { margin-top: 1rem; max-width: 26rem; color: var(--charcoal); }
+.foot h4 { font-size: .8125rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--navy); }
+.foot ul { list-style: none; padding: 0; margin-top: .75rem; display: grid; gap: .45rem; }
+.foot a { text-decoration: none; }
+.foot a:hover { color: var(--bronze); }
+.foot-bot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .75rem 2rem; padding-block: 1.25rem 1.75rem; border-top: 1px solid var(--line); font-size: .8125rem; }
+.foot-bot .essence { font: 700 .8125rem var(--f-head); letter-spacing: .2em; color: var(--bronze); }
+@media (max-width: 760px) { .foot-top { grid-template-columns: minmax(0, 1fr); } }
+</style>
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="CMAC, về đầu trang"><img src="assets/cmac-logo.png" alt="CMAC – Vững Tài chính. Mạnh Tương Lai." width="163" height="46"></a>
+    <nav class="nav" id="nav" aria-label="Điều hướng chính">
+      <a href="#dich-vu">Dịch vụ</a>
+      <a href="#cfo">CFO thuê ngoài</a>
+      <a href="#khach-hang">Khách hàng</a>
+      <a href="#cach-lam-viec">Cách làm việc</a>
+      <a href="#ve-cmac">Về CMAC</a>
+    </nav>
+    <a class="btn btn-bronze head-cta" href="#lien-he">Đặt lịch trao đổi</a>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="dark hero" aria-labelledby="hero-title">
+    <div class="wrap">
+      <div>
+        <p class="kicker">Tư vấn Tài chính &amp; Quản trị · Đà Nẵng</p>
+        <h1 id="hero-title">Vững Tài chính. Mạnh Tương Lai.<span class="en">Strong Finances. Stronger Future.</span></h1>
+        <hr class="rule">
+        <p class="hero-lede"><strong>Đối tác Tài chính &amp; Quản trị cho tăng trưởng bền vững.</strong> CMAC đồng hành cùng chủ doanh nghiệp và doanh nghiệp vừa và nhỏ, từ kế toán, thuế đến CFO thuê ngoài và tài chính doanh nghiệp, để biến những con số thành quyết định.</p>
+        <div class="hero-actions">
+          <a class="btn btn-bronze" href="#lien-he">Đặt lịch trao đổi</a>
+          <a class="btn btn-line" href="#dich-vu">Xem hệ sinh thái dịch vụ</a>
+        </div>
+      </div>
+      <aside class="questions" aria-labelledby="q-title">
+        <h2 id="q-title">Bốn câu hỏi CMAC giúp anh/chị trả lời</h2>
+        <ul>
+          <li><b>Doanh nghiệp đang kiếm tiền ở đâu?</b><span>Doanh thu, biên lợi nhuận, hiệu quả từng sản phẩm và dự án.</span></li>
+          <li><b>Tiền đang đi đâu?</b><span>Dòng tiền, vốn lưu động, công nợ, đầu tư và nợ vay.</span></li>
+          <li><b>Rủi ro nằm ở đâu?</b><span>Tài chính, thuế, kế toán, pháp lý, vận hành và cấu trúc vốn.</span></li>
+          <li><b>Nên làm gì tiếp theo?</b><span>Quyết định dựa trên dữ liệu, phân tích và kịch bản tài chính.</span></li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- CAM KẾT -->
+  <section class="sec promise" aria-labelledby="pr-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">Cam kết thương hiệu</p>
+        <h2 id="pr-title">Không dừng ở báo cáo. CMAC đi cùng anh/chị đến quyết định.</h2>
+        <hr class="rule">
+        <div class="shift">
+          <p class="from">“Chúng tôi cung cấp dịch vụ kế toán – tài chính.”</p>
+          <p class="to">“Chúng tôi giúp anh/chị hiểu doanh nghiệp đang ở đâu, tiền đang đi đâu, vấn đề nằm ở đâu và cần làm gì tiếp theo.”</p>
+        </div>
+      </div>
+      <div class="pillars">
+        <div class="pillar"><span class="en">Clarity</span><h3>Rõ ràng</h3><p>Biến dữ liệu tài chính, kế toán thành thông tin dễ hiểu, dùng được để ra quyết định.</p></div>
+        <div class="pillar"><span class="en">Control</span><h3>Kiểm soát</h3><p>Kiểm soát dòng tiền, chi phí, hiệu quả hoạt động và các rủi ro tài chính.</p></div>
+        <div class="pillar"><span class="en">Decision</span><h3>Quyết định</h3><p>Không chỉ đưa số liệu mà đưa ra góc nhìn tài chính phục vụ quyết định kinh doanh.</p></div>
+        <div class="pillar"><span class="en">Growth</span><h3>Tăng trưởng</h3><p>Mục tiêu không phải thêm báo cáo, mà là doanh nghiệp vững tài chính và mạnh năng lực tăng trưởng.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HỆ SINH THÁI 4 TẦNG -->
+  <section class="sec eco" id="dich-vu" aria-labelledby="eco-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">Hệ sinh thái dịch vụ</p>
+        <h2 id="eco-title">Bốn tầng dịch vụ, đi lên cùng doanh nghiệp</h2>
+        <hr class="rule">
+        <p>Doanh nghiệp bắt đầu ở tầng phù hợp với nhu cầu hiện tại. Khi nền tảng đã vững, CMAC đồng hành tiếp ở tầng cao hơn, như một thành viên trong ban điều hành.</p>
+        <p class="logic" aria-label="Logic giá trị">Tuân thủ <i>›</i> Kiểm soát <i>›</i> Thấu hiểu <i>›</i> Quyết định <i>›</i> Tăng trưởng</p>
+      </div>
+
+      <div class="eco-grid">
+        <div class="peaks" role="tablist" aria-label="Chọn tầng dịch vụ">
+          <button class="peak" role="tab" id="tab-1" aria-controls="tier-panel" aria-selected="true" data-tier="0"><small>Tầng 1</small><strong>Kế toán &amp; Thuế</strong></button>
+          <button class="peak" role="tab" id="tab-2" aria-controls="tier-panel" aria-selected="false" data-tier="1" tabindex="-1"><small>Tầng 2</small><strong>Quản trị tài chính</strong></button>
+          <button class="peak" role="tab" id="tab-3" aria-controls="tier-panel" aria-selected="false" data-tier="2" tabindex="-1"><small>Tầng 3</small><strong>CFO &amp; Tư vấn chiến lược</strong></button>
+          <button class="peak" role="tab" id="tab-4" aria-controls="tier-panel" aria-selected="false" data-tier="3" tabindex="-1"><small>Tầng 4</small><strong>Tài chính doanh nghiệp</strong></button>
+        </div>
+        <div class="tier" id="tier-panel" role="tabpanel" aria-labelledby="tab-1" aria-live="polite">
+          <!-- nội dung tầng do script điền; bản mặc định để trang đọc được khi chưa chạy script -->
+          <div class="tier-top"><h3>Kế toán &amp; Thuế</h3><span class="goal">Accounting &amp; Tax · Tuân thủ</span></div>
+          <p>Nền móng của mọi quyết định: sổ sách đúng, thuế tuân thủ, báo cáo đáng tin cậy.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CFO THUÊ NGOÀI -->
+  <section class="sec" id="cfo" aria-labelledby="cfo-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">CFO thuê ngoài</p>
+        <h2 id="cfo-title">Một Giám đốc tài chính thực chiến, khi doanh nghiệp chưa cần tuyển toàn thời gian</h2>
+        <hr class="rule">
+        <p>Ba mức đồng hành theo quy mô và giai đoạn phát triển. Phí cố định hằng tháng, phạm vi thống nhất bằng văn bản trước khi bắt đầu.</p>
+      </div>
+      <div class="cfo-grid">
+        <article class="pkg">
+          <span class="tag">Basic</span>
+          <h3>CFO đồng hành</h3>
+          <p class="for">Doanh nghiệp vừa và nhỏ, chủ doanh nghiệp trực tiếp điều hành.</p>
+          <ul>
+            <li>Báo cáo quản trị hằng tháng: lãi lỗ, cân đối, dòng tiền, KPI</li>
+            <li>Theo dõi dòng tiền và công nợ</li>
+            <li>Trao đổi định kỳ trực tiếp với chủ doanh nghiệp</li>
+          </ul>
+        </article>
+        <article class="pkg mid">
+          <span class="tag">Growth</span>
+          <h3>CFO tăng trưởng</h3>
+          <p class="for">SME và doanh nghiệp bất động sản đang mở rộng quy mô.</p>
+          <ul>
+            <li>Toàn bộ phạm vi gói Basic</li>
+            <li>Ngân sách, dự báo và phân tích chênh lệch</li>
+            <li>Tham dự họp ban điều hành định kỳ</li>
+          </ul>
+        </article>
+        <article class="pkg top">
+          <span class="tag">Premium</span>
+          <h3>CFO chiến lược</h3>
+          <p class="for">Doanh nghiệp lớn, doanh nghiệp và dự án bất động sản.</p>
+          <ul>
+            <li>Chiến lược tài chính và cấu trúc vốn</li>
+            <li>Chuẩn bị làm việc với ngân hàng, nhà đầu tư</li>
+            <li>Đồng hành các quyết định đầu tư, tái cấu trúc</li>
+          </ul>
+        </article>
+      </div>
+      <p class="cfo-note">Phạm vi chi tiết và mức phí của từng gói được CMAC đề xuất sau buổi trao đổi và chẩn đoán tài chính ban đầu.</p>
+    </div>
+  </section>
+
+  <!-- KHÁCH HÀNG -->
+  <section class="sec clients" id="khach-hang" aria-labelledby="kh-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">Khách hàng</p>
+        <h2 id="kh-title">CMAC đồng hành cùng ai</h2>
+        <hr class="rule">
+      </div>
+      <div class="client-grid">
+        <div class="client"><h3>Doanh nghiệp vừa và nhỏ</h3><p>Cần sổ sách, thuế vững vàng và báo cáo quản trị đủ rõ để điều hành hằng tháng.</p></div>
+        <div class="client"><h3>Doanh nghiệp bất động sản</h3><p>Dòng tiền dự án dài, nhu cầu vốn lớn, cần kế hoạch tài chính và làm việc với ngân hàng.</p></div>
+        <div class="client"><h3>Chủ doanh nghiệp, nhà đầu tư</h3><p>Muốn nhìn đúng hiệu quả từng mảng kinh doanh, định giá và thẩm định trước khi xuống tiền.</p></div>
+        <div class="client"><h3>Doanh nghiệp cần tái cấu trúc</h3><p>Áp lực nợ, dòng tiền âm hoặc mô hình kinh doanh cần sắp xếp lại.</p></div>
+        <div class="client"><h3>Doanh nghiệp cần CFO, cần vốn</h3><p>Chưa có Giám đốc tài chính, đang chuẩn bị huy động vốn hoặc vay ngân hàng.</p></div>
+        <div class="client"><h3>Cá nhân có tài sản</h3><p>Cần một kế hoạch tài chính cá nhân rõ ràng, tách bạch với tài chính doanh nghiệp.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GIÁ TRỊ C.M.A.C -->
+  <section class="sec values" aria-labelledby="gt-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">Giá trị cốt lõi</p>
+        <h2 id="gt-title">Bốn giá trị làm nên tên gọi CMAC</h2>
+        <hr class="rule">
+        <p>Tư duy như một thành viên trong ban điều hành: chuẩn mực, thực chiến và chịu trách nhiệm đến cùng với kết quả của khách hàng.</p>
+      </div>
+      <div class="acrostic">
+        <div class="letter"><span class="big" aria-hidden="true">C</span><h3><span>Clarity</span>Minh bạch</h3><p>Rõ ràng trong số liệu, minh bạch trong tư vấn, thẳng thắn trong quyết định. Không làm phức tạp thông tin để tạo cảm giác chuyên môn.</p></div>
+        <div class="letter"><span class="big" aria-hidden="true">M</span><h3><span>Mastery</span>Chuyên môn</h3><p>Năng lực thực chất trong tài chính, kế toán, thuế, quản trị, đầu tư và tài chính doanh nghiệp.</p></div>
+        <div class="letter"><span class="big" aria-hidden="true">A</span><h3><span>Accountability</span>Trách nhiệm</h3><p>Đã cam kết thì chịu trách nhiệm đến cùng về chất lượng công việc và tính chính xác của tư vấn.</p></div>
+        <div class="letter"><span class="big" aria-hidden="true">C</span><h3><span>Creation</span>Kiến tạo giá trị</h3><p>Mọi dịch vụ hướng tới tăng hiệu quả, giảm rủi ro, tối ưu dòng tiền và nâng cao giá trị doanh nghiệp.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUY TRÌNH -->
+  <section class="sec" id="cach-lam-viec" aria-labelledby="qt-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">Cách làm việc</p>
+        <h2 id="qt-title">Từ buổi trao đổi đầu tiên đến kế hoạch hành động</h2>
+        <hr class="rule">
+      </div>
+      <ol class="steps">
+        <li><h3>Trao đổi</h3><p>Lắng nghe mục tiêu, khó khăn và bối cảnh của doanh nghiệp.</p></li>
+        <li><h3>Chẩn đoán nhanh</h3><span class="time">3–5 ngày làm việc</span><p>Chẩn đoán tài chính sơ bộ, định lượng vấn đề bằng số liệu.</p></li>
+        <li><h3>Đề xuất</h3><p>Giải pháp, phạm vi, tiến độ và phí, thống nhất bằng văn bản.</p></li>
+        <li><h3>Khởi động</h3><span class="time">Trong 5 ngày làm việc</span><p>Thống nhất phân công, danh mục dữ liệu và thư mục bảo mật.</p></li>
+        <li><h3>Phân tích &amp; khuyến nghị</h3><p>Mô hình, báo cáo, dashboard và kế hoạch hành động có người phụ trách, thời hạn.</p></li>
+        <li><h3>Rà soát định kỳ</h3><p>Họp tháng hoặc quý để theo dõi kết quả và điều chỉnh.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- VỀ CMAC -->
+  <section class="sec about" id="ve-cmac" aria-labelledby="ab-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">Về CMAC</p>
+        <h2 id="ab-title">Biến Tài chính thành năng lực quản trị, và năng lực quản trị thành tăng trưởng</h2>
+        <hr class="rule">
+      </div>
+      <div class="about-grid">
+        <div>
+          <div class="mv">
+            <div>
+              <h3>Sứ mệnh</h3>
+              <p>Giúp doanh nghiệp và chủ doanh nghiệp làm chủ tài chính, nâng cao năng lực quản trị và đưa ra những quyết định tốt hơn để tăng trưởng bền vững.</p>
+            </div>
+            <div>
+              <h3>Tầm nhìn</h3>
+              <p>Trở thành một trong những doanh nghiệp tư vấn Tài chính – Quản trị hàng đầu tại Việt Nam, được khách hàng tin cậy như một đối tác chiến lược trong quản trị, tăng trưởng và phát triển doanh nghiệp.</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="symbol">
+            <img src="assets/cmac-mark.png" alt="Biểu tượng CMAC: bốn đỉnh núi lồng chữ M và A" width="152" height="121">
+            <div>
+              <h3 style="font-size:1.125rem">Ý nghĩa biểu tượng</h3>
+              <p>Hai chữ M và A (Management &amp; Accounting) lồng vào nhau thành bốn đỉnh núi. Ba đỉnh phía trước là nền tảng tài chính vững chắc; đỉnh nhỏ nhô cao phía sau là tăng trưởng và tầm nhìn.</p>
+              <p>Phần chân các nét đan chéo như một khóa liên kết: sự gắn kết dài hạn giữa CMAC và khách hàng.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <article class="leader" aria-labelledby="leader-name">
+        <figure class="leader-photo">
+          <img src="assets/ceo.jpg" alt="Ông Ngô Tấn Quang, Đồng sáng lập kiêm Tổng Giám đốc CMAC" width="560" height="700" loading="lazy">
+        </figure>
+        <div class="leader-body">
+          <span class="role">Người dẫn dắt CMAC</span>
+          <h3 id="leader-name">Ngô Tấn Quang</h3>
+          <p class="leader-title">Đồng sáng lập kiêm Tổng Giám đốc</p>
+          <p class="leader-bio">Hơn 15 năm trong lĩnh vực tài chính – kế toán, đi từ kiểm toán độc lập, quản trị tài chính tập đoàn đến huy động vốn và IPO. Anh từng là Trưởng nhóm Kiểm toán tại AAC, phụ trách Kế hoạch và Phân tích tài chính khối Sun World (Sun Group) với doanh thu trên 5.000 tỷ đồng năm 2019, và hiện là Giám đốc Tài chính Tập đoàn Đất Xanh – Regal Group. Tại đây, anh trực tiếp cấu trúc các khoản vay dự án trên 1.000 tỷ đồng và đưa Regal Group lên sàn (mã RGG). CMAC mang chính kinh nghiệm thực chiến đó đến với doanh nghiệp vừa và nhỏ Miền Trung.</p>
+          <ul class="creds" aria-label="Chứng chỉ hành nghề">
+            <li>CPA Việt Nam</li><li>Kế toán trưởng</li><li>Hành nghề Đại lý Thuế</li><li>Hành nghề dịch vụ kế toán</li>
+          </ul>
+          <ol class="path" aria-label="Chặng đường nghề nghiệp">
+            <li><span class="num">2013</span>Kiểm toán AAC</li>
+            <li><span class="num">2018</span>Sun Group</li>
+            <li><span class="num">2021</span>Đất Xanh – Regal Group</li>
+            <li><span class="num">2026</span>Sáng lập CMAC</li>
+          </ol>
+        </div>
+      </article>
+
+      <div class="partners">
+        <h3>Mạng lưới đối tác chuyên môn</h3>
+        <p>CMAC phối hợp với các đối tác đủ điều kiện hành nghề để mỗi phần việc được thực hiện đúng phạm vi pháp lý và đúng chuyên môn.</p>
+        <ul class="partner-list">
+          <li>Kế toán hành nghề</li><li>Tư vấn thuế</li><li>Luật doanh nghiệp</li><li>Ngân hàng</li><li>Kiểm toán độc lập</li><li>Thẩm định giá</li><li>M&amp;A</li><li>ERP · BI · CRM</li>
+        </ul>
+      </div>
+
+      <dl class="legal-card">
+        <div><dt>Pháp nhân</dt><dd>Công ty TNHH Tư vấn Quản trị và Kế toán Miền Trung</dd></div>
+        <div><dt>Tên quốc tế</dt><dd>Central Management and Accounting Consulting Co., Ltd.</dd></div>
+        <div><dt>Mã số doanh nghiệp</dt><dd class="num">4001340408</dd></div>
+        <div><dt>Trụ sở</dt><dd>814 Trần Hưng Đạo, P. Điện Bàn Đông, TP. Đà Nẵng</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- LIÊN HỆ -->
+  <section class="dark contact" id="lien-he" aria-labelledby="lh-title">
+    <div class="wrap">
+      <div>
+        <p class="kicker">Liên hệ</p>
+        <h2 id="lh-title">Bắt đầu bằng một buổi trao đổi</h2>
+        <hr class="rule">
+        <p class="lede">Cho CMAC biết doanh nghiệp đang ở đâu và anh/chị muốn đi đến đâu. Từ đó, hai bên thống nhất bước đi đầu tiên phù hợp.</p>
+        <div class="channels">
+          <div><div class="ch-label">Điện thoại / Zalo</div><div class="ch-row"><span class="ch-val num" id="phone">0839 10 09 26</span><button class="copy" type="button" data-copy="phone">Sao chép</button></div></div>
+          <div><div class="ch-label">Email</div><div class="ch-row"><span class="ch-val" id="email">Ceo.cmac@gmail.com</span><button class="copy" type="button" data-copy="email">Sao chép</button></div></div>
+          <div><div class="ch-label">Văn phòng</div><div class="ch-row"><span class="ch-val sm">814 Trần Hưng Đạo, Phường Điện Bàn Đông, Thành phố Đà Nẵng</span></div></div>
+        </div>
+      </div>
+
+      <form id="form" novalidate>
+        <h3>Gửi yêu cầu trao đổi</h3>
+        <div class="row2">
+          <div class="field"><label for="f-name">Họ và tên</label><input id="f-name" name="name" autocomplete="name" required><span class="err" id="e-name"></span></div>
+          <div class="field"><label for="f-phone">Số điện thoại</label><input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required><span class="err" id="e-phone"></span></div>
+        </div>
+        <div class="row2">
+          <div class="field"><label for="f-company">Doanh nghiệp <span class="hint">(không bắt buộc)</span></label><input id="f-company" name="company" autocomplete="organization"></div>
+          <div class="field"><label for="f-role">Chức danh <span class="hint">(không bắt buộc)</span></label><input id="f-role" name="role" autocomplete="organization-title"></div>
+        </div>
+        <div class="field">
+          <label for="f-need">Anh/chị quan tâm đến</label>
+          <select id="f-need" name="need">
+            <option>Kế toán &amp; Thuế</option>
+            <option>Quản trị tài chính, dòng tiền, ngân sách</option>
+            <option selected>CFO thuê ngoài</option>
+            <option>Tái cấu trúc tài chính</option>
+            <option>Huy động vốn, tín dụng ngân hàng</option>
+            <option>Thẩm định, định giá, M&amp;A</option>
+            <option>Kế hoạch tài chính cá nhân</option>
+            <option>Chưa rõ, cần trao đổi</option>
+          </select>
+        </div>
+        <div class="field"><label for="f-msg">Tình hình hiện tại <span class="hint">(ngành nghề, quy mô, vấn đề đang gặp)</span></label><textarea id="f-msg" name="msg"></textarea></div>
+        <button class="btn btn-bronze" type="submit">Chuẩn bị yêu cầu</button>
+        <div class="result" id="result" hidden aria-live="polite">
+          <p>Yêu cầu đã sẵn sàng. Sao chép nội dung dưới đây và gửi tới CMAC qua Zalo <strong class="num">0839 10 09 26</strong> hoặc email <strong>Ceo.cmac@gmail.com</strong>.</p>
+          <pre id="summary"></pre>
+          <button class="btn btn-line" type="button" id="copySummary">Sao chép nội dung</button>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-top">
+    <div>
+      <img src="assets/cmac-logo.png" alt="CMAC" width="220" height="62">
+      <p class="one">Đối tác Tài chính &amp; Quản trị giúp doanh nghiệp vững tài chính, nâng cao năng lực quản trị và tăng trưởng bền vững.</p>
+    </div>
+    <div>
+      <h4>Dịch vụ</h4>
+      <ul>
+        <li><a href="#dich-vu" data-goto="0">Kế toán &amp; Thuế</a></li>
+        <li><a href="#dich-vu" data-goto="1">Quản trị tài chính</a></li>
+        <li><a href="#cfo">CFO thuê ngoài</a></li>
+        <li><a href="#dich-vu" data-goto="3">Tài chính doanh nghiệp</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Liên hệ</h4>
+      <ul>
+        <li class="num">0839 10 09 26</li>
+        <li>Ceo.cmac@gmail.com</li>
+        <li>814 Trần Hưng Đạo, P. Điện Bàn Đông, TP. Đà Nẵng</li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap foot-bot">
+    <span>© 2026 Công ty TNHH Tư vấn Quản trị và Kế toán Miền Trung · MSDN 4001340408</span>
+    <span class="essence">FINANCE · TRUST · GROWTH</span>
+  </div>
+</footer>
+
+<script>
+(() => {
+  // Menu mobile
+  const btn = document.getElementById("menuBtn"), nav = document.getElementById("nav");
+  btn.addEventListener("click", () => { const o = nav.classList.toggle("open"); btn.setAttribute("aria-expanded", String(o)); });
+  nav.addEventListener("click", (e) => { if (e.target.tagName === "A") { nav.classList.remove("open"); btn.setAttribute("aria-expanded", "false"); } });
+
+  // Hệ sinh thái 4 tầng (danh mục 18 dịch vụ theo CMAC Operating System)
+  const R = "Phí hằng tháng", P = "Theo dự án";
+  const tiers = [
+    { name: "Kế toán & Thuế", goal: "Accounting & Tax · Tuân thủ",
+      lead: "Nền móng của mọi quyết định: sổ sách đúng, thuế tuân thủ, báo cáo đáng tin cậy.",
+      items: [
+        ["Hỗ trợ vận hành kế toán nội bộ", "Chuẩn hóa chứng từ, quy trình và sổ sách để bộ phận kế toán của doanh nghiệp vận hành đúng và đều.", R],
+        ["Tư vấn và hỗ trợ tuân thủ thuế", "Rà soát nghĩa vụ thuế, nhận diện rủi ro và đồng hành khi làm việc với cơ quan thuế.", R + " / " + P],
+        ["Thiết lập hệ thống kiểm soát nội bộ", "Ma trận rủi ro và kiểm soát, phân quyền phê duyệt, quy chế tài chính nội bộ.", P],
+      ] },
+    { name: "Quản trị tài chính", goal: "Financial Management · Kiểm soát",
+      lead: "Từ số liệu kế toán đến bức tranh quản trị: biết tiền ở đâu, hiệu quả ở đâu, kế hoạch đi đến đâu.",
+      items: [
+        ["Báo cáo quản trị CFO", "Bộ báo cáo hằng tháng gồm lãi lỗ, cân đối, dòng tiền và KPI, viết cho người ra quyết định.", R],
+        ["Quản trị dòng tiền", "Dự báo dòng tiền 13 tuần, kiểm soát thu chi, công nợ và vốn lưu động.", R],
+        ["Lập ngân sách và kế hoạch tài chính", "Ngân sách năm, kế hoạch doanh thu, chi phí và nhu cầu vốn theo quy mô doanh nghiệp.", P],
+        ["FP&A thuê ngoài", "Dự báo, phân tích chênh lệch thực tế so với kế hoạch và đề xuất điều chỉnh định kỳ.", R],
+        ["Thiết kế KPI và hệ thống quản trị", "Cây KPI gắn với mục tiêu, dashboard theo dõi và nhịp họp quản trị.", P],
+      ] },
+    { name: "CFO & Tư vấn chiến lược", goal: "CFO & Strategic Advisory · Quyết định",
+      lead: "Một Giám đốc tài chính đồng hành trong ban điều hành, giúp doanh nghiệp ra quyết định dựa trên dữ liệu và kịch bản.",
+      items: [
+        ["CFO thuê ngoài: Basic, Growth, Premium", "Ba mức đồng hành theo quy mô và giai đoạn phát triển của doanh nghiệp.", R],
+        ["Tái cấu trúc tài chính", "Đánh giá cấu trúc vốn, nợ và dòng tiền; xây dựng phương án tái cấu trúc khả thi.", P],
+        ["Chiến lược tài chính và kinh doanh", "Kịch bản tài chính cho các quyết định mở rộng, đầu tư hoặc thu hẹp.", P],
+      ] },
+    { name: "Tài chính doanh nghiệp", goal: "Corporate Finance · Tăng trưởng",
+      lead: "Khi doanh nghiệp cần vốn, cần giao dịch hoặc cần một con số định giá đáng tin cậy.",
+      items: [
+        ["Chuẩn bị hồ sơ huy động vốn", "Mô hình tài chính, kế hoạch kinh doanh và hồ sơ trình bày với nhà đầu tư.", P],
+        ["Tư vấn tín dụng và cấu trúc khoản vay", "Phương án vay, hồ sơ và cấu trúc khoản vay phù hợp dòng tiền. Quyết định phê duyệt thuộc về ngân hàng.", P],
+        ["Thẩm định tài chính (Financial Due Diligence)", "Đánh giá chất lượng số liệu, rủi ro và các điểm cần lưu ý trước giao dịch.", P],
+        ["Định giá doanh nghiệp, dự án", "Định giá có nêu rõ phương pháp và giả định, phục vụ đàm phán và ra quyết định.", P],
+        ["Tư vấn M&A", "Đồng hành giao dịch mua bán, sáp nhập cùng mạng lưới đối tác pháp lý.", P],
+      ] },
+  ];
+  const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+  const panel = document.getElementById("tier-panel");
+  const tabs = [...document.querySelectorAll(".peak")];
+  function show(i, focus) {
+    tabs.forEach((t, k) => { t.setAttribute("aria-selected", String(k === i)); t.tabIndex = k === i ? 0 : -1; });
+    if (focus) tabs[i].focus();
+    const t = tiers[i];
+    panel.setAttribute("aria-labelledby", tabs[i].id);
+    panel.innerHTML = `<div class="tier-top"><h3>${esc(t.name)}</h3><span class="goal">${esc(t.goal)}</span></div><p>${esc(t.lead)}</p>
+      <ul class="svc-list">${t.items.map(([n, d, f]) => `<li><b>${esc(n)}</b><span class="fee">${esc(f)}</span><p>${esc(d)}</p></li>`).join("")}</ul>`;
+  }
+  tabs.forEach((t, i) => {
+    t.addEventListener("click", () => show(i));
+    t.addEventListener("keydown", (e) => {
+      const d = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key];
+      if (d) { e.preventDefault(); show((i + d + tabs.length) % tabs.length, true); }
+      if (e.key === "Home") { e.preventDefault(); show(0, true); }
+      if (e.key === "End") { e.preventDefault(); show(tabs.length - 1, true); }
+    });
+  });
+  document.querySelectorAll("[data-goto]").forEach((a) => a.addEventListener("click", () => show(+a.dataset.goto)));
+  show(0);
+
+  // Sao chép
+  async function copyText(text, b) {
+    const old = b.textContent;
+    try { await navigator.clipboard.writeText(text); b.textContent = "Đã sao chép"; }
+    catch { b.textContent = "Hãy bôi đen để sao chép"; }
+    setTimeout(() => (b.textContent = old), 1800);
+  }
+  document.querySelectorAll("[data-copy]").forEach((b) => b.addEventListener("click", () => copyText(document.getElementById(b.dataset.copy).textContent, b)));
+
+  // Form
+  const form = document.getElementById("form");
+  const setErr = (id, m) => { document.getElementById("f-" + id).setAttribute("aria-invalid", m ? "true" : "false"); document.getElementById("e-" + id).textContent = m; };
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const v = Object.fromEntries(new FormData(form));
+    let ok = true;
+    if (!v.name.trim()) { setErr("name", "Nhập họ và tên để CMAC liên hệ lại."); ok = false; } else setErr("name", "");
+    const d = v.phone.replace(/\D/g, "");
+    if (d.length < 9 || d.length > 11) { setErr("phone", "Số điện thoại cần 10 chữ số, ví dụ 0905 123 456."); ok = false; } else setErr("phone", "");
+    if (!ok) { form.querySelector('[aria-invalid="true"]').focus(); return; }
+    const lines = [
+      "YÊU CẦU TRAO ĐỔI GỬI CMAC",
+      `Họ tên: ${v.name.trim()}${v.role.trim() ? " – " + v.role.trim() : ""}`,
+      `Điện thoại: ${v.phone.trim()}`,
+      v.company.trim() ? `Doanh nghiệp: ${v.company.trim()}` : null,
+      `Quan tâm: ${v.need}`,
+      v.msg.trim() ? `Tình hình: ${v.msg.trim()}` : null,
+    ].filter(Boolean);
+    document.getElementById("summary").textContent = lines.join("\n");
+    document.getElementById("result").hidden = false;
+    document.getElementById("copySummary").focus();
+  });
+  document.getElementById("copySummary").addEventListener("click", (e) => copyText(document.getElementById("summary").textContent, e.currentTarget));
+})();
+</script>
+</body>
+</html>
