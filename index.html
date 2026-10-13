@@ -300,6 +300,25 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--bronze-hi);
 .result p { font-size: .875rem; }
 .result pre { margin: 0; white-space: pre-wrap; font: .875rem/1.55 var(--f-body); color: var(--sand); background: rgba(42,31,26,.7); border-radius: 4px; padding: .9rem; max-height: 15rem; overflow: auto; }
 @media (max-width: 900px) { .contact .wrap { grid-template-columns: minmax(0, 1fr); } }
+.consent { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: .65rem; align-items: start; font-size: .875rem; font-weight: 400; color: var(--sand); cursor: pointer; }
+.consent input { width: 1.15rem; height: 1.15rem; min-height: 0; margin: .15rem 0 0; padding: 0; accent-color: var(--bronze-hi); }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.btn[disabled] { opacity: .65; cursor: progress; }
+.sent { display: grid; gap: .75rem; padding: .5rem 0; }
+.sent h3 { font-size: 1.25rem; }
+.sent p { font-size: .9375rem; }
+.form-error { font-size: .875rem; color: #F2B8A0; }
+.btn-zalo { display: inline-flex; align-items: center; gap: .45rem; min-height: 2.25rem; padding: 0 .85rem; border-radius: 4px; background: #0068FF; color: #fff; font: 700 .8125rem var(--f-head); text-decoration: none; }
+.btn-zalo:hover { background: #0052CC; }
+.zalo-float {
+  position: fixed; right: max(16px, env(safe-area-inset-right, 0px) + 16px); bottom: calc(env(safe-area-inset-bottom, 0px) + 20px); z-index: 40;
+  display: flex; align-items: center; gap: .5rem; min-height: 3.25rem; padding: 0 1.15rem 0 .5rem; border-radius: 999px;
+  background: #0068FF; color: #fff; text-decoration: none; font: 700 .9375rem var(--f-head); box-shadow: 0 6px 20px rgba(0, 60, 160, .35);
+  transition: transform .18s, background-color .18s;
+}
+.zalo-float:hover { background: #0052CC; transform: translateY(-2px); }
+.zalo-float .zi { display: grid; place-items: center; width: 2.35rem; height: 2.35rem; border-radius: 50%; background: #fff; color: #0068FF; font: 800 .6875rem var(--f-head); letter-spacing: -.01em; }
+@media (max-width: 560px) { .zalo-float .zt { display: none; } .zalo-float { padding: 0 .45rem; } }
 
 /* ---------- Footer (nền sáng, logo đồng) ---------- */
 .foot { background: var(--paper); border-top: 1px solid var(--line); font-size: .875rem; color: var(--muted); }
@@ -586,7 +605,7 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--bronze-hi);
         <hr class="rule">
         <p class="lede">Cho CMAC biết doanh nghiệp đang ở đâu và anh/chị muốn đi đến đâu. Từ đó, hai bên thống nhất bước đi đầu tiên phù hợp.</p>
         <div class="channels">
-          <div><div class="ch-label">Điện thoại / Zalo</div><div class="ch-row"><span class="ch-val num" id="phone">0839 10 09 26</span><button class="copy" type="button" data-copy="phone">Sao chép</button></div></div>
+          <div><div class="ch-label">Điện thoại / Zalo</div><div class="ch-row"><span class="ch-val num" id="phone">0839 10 09 26</span><a class="btn-zalo" href="https://zalo.me/0839100926" target="_blank" rel="noopener">Nhắn Zalo</a><button class="copy" type="button" data-copy="phone">Sao chép</button></div></div>
           <div><div class="ch-label">Email</div><div class="ch-row"><span class="ch-val" id="email">Ceo.cmac@gmail.com</span><button class="copy" type="button" data-copy="email">Sao chép</button></div></div>
           <div><div class="ch-label">Văn phòng</div><div class="ch-row"><span class="ch-val sm">814 Trần Hưng Đạo, Phường Điện Bàn Đông, Thành phố Đà Nẵng</span></div></div>
         </div>
@@ -602,6 +621,7 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--bronze-hi);
           <div class="field"><label for="f-company">Doanh nghiệp <span class="hint">(không bắt buộc)</span></label><input id="f-company" name="company" autocomplete="organization"></div>
           <div class="field"><label for="f-role">Chức danh <span class="hint">(không bắt buộc)</span></label><input id="f-role" name="role" autocomplete="organization-title"></div>
         </div>
+        <div class="field"><label for="f-email">Email <span class="hint">(không bắt buộc)</span></label><input id="f-email" name="email" type="email" autocomplete="email" inputmode="email"><span class="err" id="e-email"></span></div>
         <div class="field">
           <label for="f-need">Anh/chị quan tâm đến</label>
           <select id="f-need" name="need">
@@ -616,13 +636,25 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--bronze-hi);
           </select>
         </div>
         <div class="field"><label for="f-msg">Tình hình hiện tại <span class="hint">(ngành nghề, quy mô, vấn đề đang gặp)</span></label><textarea id="f-msg" name="msg"></textarea></div>
-        <button class="btn btn-bronze" type="submit">Chuẩn bị yêu cầu</button>
+        <div class="hp" aria-hidden="true"><label for="f-website">Website</label><input id="f-website" name="website" tabindex="-1" autocomplete="off"></div>
+        <div class="field">
+          <label class="consent" for="f-consent"><input id="f-consent" name="consent" type="checkbox" value="yes"><span>Tôi đồng ý để CMAC sử dụng thông tin trên để liên hệ tư vấn. CMAC không chia sẻ thông tin của anh/chị cho bên thứ ba.</span></label>
+          <span class="err" id="e-consent"></span>
+        </div>
+        <button class="btn btn-bronze" type="submit" id="submitBtn">Gửi yêu cầu</button>
+        <p class="form-error" id="formError" hidden></p>
         <div class="result" id="result" hidden aria-live="polite">
-          <p>Yêu cầu đã sẵn sàng. Sao chép nội dung dưới đây và gửi tới CMAC qua Zalo <strong class="num">0839 10 09 26</strong> hoặc email <strong>Ceo.cmac@gmail.com</strong>.</p>
+          <p id="resultMsg">Sao chép nội dung dưới đây và gửi tới CMAC qua Zalo <strong class="num">0839 10 09 26</strong> hoặc email <strong>Ceo.cmac@gmail.com</strong>.</p>
           <pre id="summary"></pre>
-          <button class="btn btn-line" type="button" id="copySummary">Sao chép nội dung</button>
+          <div class="ch-row"><button class="btn btn-line" type="button" id="copySummary">Sao chép nội dung</button><a class="btn-zalo" href="https://zalo.me/0839100926" target="_blank" rel="noopener">Mở Zalo CMAC</a></div>
         </div>
       </form>
+      <div class="sent" id="sent" hidden tabindex="-1" aria-live="polite">
+        <p class="kicker">Đã gửi</p>
+        <h3>Cảm ơn anh/chị đã gửi yêu cầu</h3>
+        <p>CMAC đã nhận được thông tin và sẽ liên hệ lại qua số điện thoại anh/chị cung cấp. Nếu cần trao đổi ngay, anh/chị nhắn Zalo hoặc gọi <strong class="num">0839 10 09 26</strong>.</p>
+        <div class="ch-row"><a class="btn-zalo" href="https://zalo.me/0839100926" target="_blank" rel="noopener">Nhắn Zalo cho CMAC</a></div>
+      </div>
     </div>
   </section>
 </main>
@@ -656,6 +688,8 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--bronze-hi);
     <span class="essence">FINANCE · TRUST · GROWTH</span>
   </div>
 </footer>
+
+<a class="zalo-float" href="https://zalo.me/0839100926" target="_blank" rel="noopener" aria-label="Nhắn Zalo cho CMAC: 0839 10 09 26"><span class="zi" aria-hidden="true">Zalo</span><span class="zt">Nhắn Zalo</span></a>
 
 <script>
 (() => {
@@ -732,28 +766,72 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--bronze-hi);
   }
   document.querySelectorAll("[data-copy]").forEach((b) => b.addEventListener("click", () => copyText(document.getElementById(b.dataset.copy).textContent, b)));
 
-  // Form
+  // Form – gửi về Google Sheet + email của CMAC qua Google Apps Script (xem apps-script/Code.gs)
+  // Dán URL Web App (dạng https://script.google.com/macros/s/.../exec) vào đây. Để trống: form chuyển sang chế độ sao chép.
+  const FORM_ENDPOINT = "";
   const form = document.getElementById("form");
-  const setErr = (id, m) => { document.getElementById("f-" + id).setAttribute("aria-invalid", m ? "true" : "false"); document.getElementById("e-" + id).textContent = m; };
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const v = Object.fromEntries(new FormData(form));
+  const submitBtn = document.getElementById("submitBtn");
+  const formError = document.getElementById("formError");
+  const setErr = (id, m) => { const f = document.getElementById("f-" + id); f.setAttribute("aria-invalid", m ? "true" : "false"); document.getElementById("e-" + id).textContent = m; };
+
+  function validate(v) {
     let ok = true;
     if (!v.name.trim()) { setErr("name", "Nhập họ và tên để CMAC liên hệ lại."); ok = false; } else setErr("name", "");
     const d = v.phone.replace(/\D/g, "");
     if (d.length < 9 || d.length > 11) { setErr("phone", "Số điện thoại cần 10 chữ số, ví dụ 0905 123 456."); ok = false; } else setErr("phone", "");
-    if (!ok) { form.querySelector('[aria-invalid="true"]').focus(); return; }
-    const lines = [
+    if (v.email.trim() && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v.email.trim())) { setErr("email", "Email chưa đúng định dạng, ví dụ ten@congty.vn."); ok = false; } else setErr("email", "");
+    if (v.consent !== "yes") { setErr("consent", "Vui lòng đánh dấu đồng ý để CMAC có thể liên hệ lại."); ok = false; } else setErr("consent", "");
+    return ok;
+  }
+  function summaryOf(v) {
+    return [
       "YÊU CẦU TRAO ĐỔI GỬI CMAC",
       `Họ tên: ${v.name.trim()}${v.role.trim() ? " – " + v.role.trim() : ""}`,
       `Điện thoại: ${v.phone.trim()}`,
+      v.email.trim() ? `Email: ${v.email.trim()}` : null,
       v.company.trim() ? `Doanh nghiệp: ${v.company.trim()}` : null,
       `Quan tâm: ${v.need}`,
       v.msg.trim() ? `Tình hình: ${v.msg.trim()}` : null,
-    ].filter(Boolean);
-    document.getElementById("summary").textContent = lines.join("\n");
+    ].filter(Boolean).join("\n");
+  }
+  function showCopyFallback(v, message) {
+    document.getElementById("resultMsg").innerHTML = message;
+    document.getElementById("summary").textContent = summaryOf(v);
     document.getElementById("result").hidden = false;
     document.getElementById("copySummary").focus();
+  }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const fd = new FormData(form);
+    const v = Object.fromEntries(fd);
+    v.consent = fd.get("consent") || "";
+    formError.hidden = true;
+    if (!validate(v)) { form.querySelector('[aria-invalid="true"]').focus(); return; }
+    if (v.website) return; // bẫy spam
+
+    if (!FORM_ENDPOINT) {
+      showCopyFallback(v, 'Sao chép nội dung dưới đây và gửi tới CMAC qua Zalo <strong class="num">0839 10 09 26</strong> hoặc email <strong>Ceo.cmac@gmail.com</strong>.');
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Đang gửi…";
+    try {
+      const res = await fetch(FORM_ENDPOINT, { method: "POST", body: new URLSearchParams({ ...v, page: location.href }) });
+      const out = await res.json();
+      if (!out.ok) throw new Error(out.error || "Gửi không thành công");
+      form.hidden = true;
+      const sent = document.getElementById("sent");
+      sent.hidden = false;
+      sent.focus();
+    } catch (err) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Gửi lại yêu cầu";
+      formError.textContent = "Chưa gửi được yêu cầu do lỗi kết nối. Anh/chị bấm gửi lại, hoặc sao chép nội dung bên dưới và nhắn Zalo cho CMAC.";
+      formError.hidden = false;
+      showCopyFallback(v, 'Nội dung yêu cầu của anh/chị. Gửi qua Zalo <strong class="num">0839 10 09 26</strong> hoặc email <strong>Ceo.cmac@gmail.com</strong>.');
+    }
   });
   document.getElementById("copySummary").addEventListener("click", (e) => copyText(document.getElementById("summary").textContent, e.currentTarget));
 })();
