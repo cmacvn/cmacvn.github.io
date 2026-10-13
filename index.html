@@ -304,7 +304,9 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--bronze-hi);
 .consent input { width: 1.15rem; height: 1.15rem; min-height: 0; margin: .15rem 0 0; padding: 0; accent-color: var(--bronze-hi); }
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 .btn[disabled] { opacity: .65; cursor: progress; }
-.sent { display: grid; gap: .75rem; padding: .5rem 0; }
+.sent { display: grid; gap: .9rem; align-content: start; align-self: start; background: var(--choco-card); border: 1px solid rgba(167,130,96,.35); border-radius: var(--radius); padding: clamp(1.5rem, 3vw, 2.25rem); }
+.sent:focus { outline: none; }
+.sent .ch-row { margin-top: .5rem; }
 .sent h3 { font-size: 1.25rem; }
 .sent p { font-size: .9375rem; }
 .form-error { font-size: .875rem; color: #F2B8A0; }
