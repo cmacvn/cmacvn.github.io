@@ -96,12 +96,12 @@ a { color: inherit; }
 .site-head .wrap { display: flex; align-items: center; gap: 1.75rem; min-height: 4.5rem; }
 .brand { display: block; line-height: 0; }
 .brand img { height: 46px; width: auto; }
-.nav { display: flex; gap: 1.6rem; margin-left: auto; }
+.nav { display: flex; gap: 1.25rem; margin-left: auto; }
 .nav a { font-family: var(--f-head); font-weight: 600; font-size: .875rem; color: var(--navy); text-decoration: none; padding-block: .5rem; border-bottom: 2px solid transparent; }
 .nav a:hover { border-bottom-color: var(--bronze); }
 .head-cta { min-height: 2.5rem; font-size: .875rem; }
 .menu-btn { display: none; margin-left: auto; background: none; border: 1px solid var(--line); color: var(--navy); border-radius: 4px; min-height: 2.75rem; padding: 0 1rem; font: 600 .875rem var(--f-head); cursor: pointer; }
-@media (max-width: 900px) {
+@media (max-width: 1140px) {
   .nav, .head-cta { display: none; }
   .menu-btn { display: inline-flex; align-items: center; }
   .nav.open { display: flex; position: absolute; left: 0; right: 0; top: 100%; flex-direction: column; gap: 0; background: var(--paper); padding: .25rem var(--gutter) 1rem; border-bottom: 1px solid var(--line); box-shadow: var(--shadow); }
@@ -346,6 +346,22 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--bronze-hi);
 @media (max-width: 560px) { .zalo-float .zt { display: none; } .zalo-float { padding: 0 .45rem; } }
 
 /* ---------- Footer (nền sáng, logo đồng) ---------- */
+/* ---------- Bài viết mới ---------- */
+.latest { background: var(--paper); border-top: 1px solid var(--line); }
+.latest-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 1rem 2rem; }
+.latest-links { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; }
+.latest-links a { font: 700 .9375rem var(--f-head); color: var(--bronze-lo); text-decoration: none; border-bottom: 2px solid var(--bronze-hi); padding-bottom: .15rem; }
+.latest-links a:hover { color: var(--navy); }
+.latest-grid { list-style: none; padding: 0; margin-top: 2.5rem; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+.latest-card { display: flex; flex-direction: column; gap: .6rem; background: var(--cream); border-top: 4px solid var(--bronze); border-radius: var(--radius); padding: 1.4rem 1.4rem 1.5rem; }
+.latest-card .tag { font: 700 .75rem var(--f-head); letter-spacing: .1em; text-transform: uppercase; color: var(--bronze); }
+.latest-card h3 { font-size: 1.125rem; font-weight: 800; line-height: 1.3; }
+.latest-card h3 a { text-decoration: none; }
+.latest-card h3 a:hover { color: var(--bronze-lo); }
+.latest-card p { font-size: .9375rem; }
+.latest-card .meta { margin-top: auto; padding-top: .4rem; font-size: .8125rem; color: var(--muted); }
+@media (max-width: 960px) { .latest-grid { grid-template-columns: minmax(0, 1fr); } }
+
 .foot { background: var(--paper); border-top: 1px solid var(--line); font-size: .875rem; color: var(--muted); }
 .foot-top { display: grid; grid-template-columns: minmax(0, 1.3fr) repeat(2, minmax(0, 1fr)); gap: 2rem; padding-block: 3rem 2rem; }
 .foot-top img { width: 220px; max-width: 100%; height: auto; }
@@ -368,6 +384,8 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--bronze-hi);
       <a href="#cfo">CFO thuê ngoài</a>
       <a href="#khach-hang">Khách hàng</a>
       <a href="#cach-lam-viec">Cách làm việc</a>
+      <a href="/kien-thuc/">Kiến thức</a>
+      <a href="/tin-tuc/">Tin tức</a>
       <a href="#ve-cmac">Về CMAC</a>
     </nav>
     <a class="btn btn-bronze head-cta" href="#lien-he">Đặt lịch trao đổi</a>
@@ -648,6 +666,42 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--bronze-hi);
       </dl>
     </div>
   </section>
+
+  <!-- BÀI VIẾT MỚI: do tools/build-pages.js tự điền, không sửa tay giữa 2 dấu dưới -->
+  <!-- LATEST:START -->
+  <section class="sec latest" id="bai-viet" aria-labelledby="latest-title">
+    <div class="wrap">
+      <div class="latest-head">
+        <div class="sec-head">
+          <p class="kicker">Kiến thức &amp; Tin tức</p>
+          <h2 id="latest-title">Bài viết mới từ CMAC</h2>
+          <hr class="rule">
+        </div>
+        <div class="latest-links"><a href="/kien-thuc/">Xem tất cả Kiến thức</a><a href="/tin-tuc/">Xem Tin tức</a></div>
+      </div>
+      <ul class="latest-grid">
+        <li class="latest-card">
+          <span class="tag">Quản trị tài chính</span>
+          <h3><a href="/kien-thuc/du-bao-dong-tien-13-tuan/">Dự báo dòng tiền 13 tuần: công cụ giữ an toàn thanh khoản cho doanh nghiệp</a></h3>
+          <p>Doanh nghiệp có lãi vẫn có thể thiếu tiền. Bảng dự báo dòng tiền 13 tuần giúp chủ doanh nghiệp nhìn thấy trước những tuần căng thẳng để xử lý kịp thời.</p>
+          <span class="meta">14/10/2026 · 3 phút đọc</span>
+        </li>
+        <li class="latest-card">
+          <span class="tag">CFO &amp; Chiến lược</span>
+          <h3><a href="/kien-thuc/khi-nao-doanh-nghiep-can-cfo-thue-ngoai/">Khi nào doanh nghiệp cần một CFO thuê ngoài?</a></h3>
+          <p>Kế toán trưởng giữ cho sổ sách đúng. Giám đốc tài chính giúp doanh nghiệp ra quyết định. Sáu dấu hiệu cho thấy đã đến lúc doanh nghiệp cần vai trò CFO.</p>
+          <span class="meta">13/10/2026 · 3 phút đọc</span>
+        </li>
+        <li class="latest-card">
+          <span class="tag">Tin tức</span>
+          <h3><a href="/tin-tuc/hoi-nghi-khoi-thong-dong-von-da-nang-2026/">Tổng Giám đốc CMAC dự Hội nghị “Khơi thông dòng vốn – Đồng hành cùng Đà Nẵng tăng trưởng”</a></h3>
+          <p>Ông Ngô Tấn Quang, Đồng sáng lập kiêm Tổng Giám đốc CMAC, cùng lãnh đạo UBND thành phố Đà Nẵng và các sở, ban, ngành tại hội nghị do Ngân hàng Nhà nước Việt Nam và UBND thành phố Đà Nẵng tổ chức.</p>
+          <span class="meta">08/10/2026 · 2 phút đọc</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <!-- LATEST:END -->
 
   <!-- LIÊN HỆ -->
   <section class="dark contact" id="lien-he" aria-labelledby="lh-title">

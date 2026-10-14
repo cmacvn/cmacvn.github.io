@@ -7,7 +7,10 @@ Website giới thiệu **Công ty TNHH Tư vấn Quản trị và Kế toán Mi�
 ## Cấu trúc
 
 ```
-index.html          Trang chính (HTML + CSS + JS thuần, không cần build)
+index.html          Trang chủ (HTML + CSS + JS thuần)
+kien-thuc/, tin-tuc/  Trang Kiến thức, Tin tức (tạo bởi tools/build-pages.js từ content/)
+content/            Nội dung bài viết (mỗi bài 1 file HTML có khối JSON ở đầu)
+tools/              build-pages.js (tạo trang), serve.js (xem thử trên máy)
 assets/
   cmac-logo.png     Logo lockup chính thức (nền trong suốt)
   cmac-mark.png     Biểu tượng núi M–A (favicon)
