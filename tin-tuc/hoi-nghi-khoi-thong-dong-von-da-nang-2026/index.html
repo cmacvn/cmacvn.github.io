@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@600;700;800&display=swap">
-<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/site.css?v=66121c53">
 </head>
 <body>
 <header class="site-head">
@@ -122,12 +122,21 @@
   const b = document.getElementById("menuBtn"), n = document.getElementById("nav");
   b.addEventListener("click", () => { const o = n.classList.toggle("open"); b.setAttribute("aria-expanded", String(o)); });
   n.addEventListener("click", (e) => { if (e.target.tagName === "A") { n.classList.remove("open"); b.setAttribute("aria-expanded", "false"); } });
-  const chips = document.querySelectorAll("[data-filter]");
-  chips.forEach((c) => c.addEventListener("click", () => {
+  // Lọc chủ đề Kiến thức: đổi chú thích, ẩn/hiện bài, ghi #chủ-đề lên địa chỉ để gửi link thẳng
+  const chips = [...document.querySelectorAll("[data-filter]")];
+  const note = document.getElementById("topicNote"), empty = document.getElementById("topicEmpty");
+  function pick(c, push) {
     chips.forEach((x) => x.setAttribute("aria-pressed", String(x === c)));
     const f = c.dataset.filter;
-    document.querySelectorAll("[data-topic]").forEach((el) => { el.hidden = f !== "*" && el.dataset.topic !== f; });
-  }));
+    let shown = 0;
+    document.querySelectorAll("[data-topic]").forEach((el) => { el.hidden = f !== "*" && el.dataset.topic !== f; if (!el.hidden) shown++; });
+    if (note) note.textContent = c.dataset.desc;
+    if (empty) empty.hidden = shown > 0;
+    if (push) history.replaceState(null, "", c.dataset.slug ? "#" + c.dataset.slug : location.pathname);
+  }
+  chips.forEach((c) => c.addEventListener("click", () => pick(c, true)));
+  const fromHash = chips.find((c) => c.dataset.slug && "#" + c.dataset.slug === location.hash);
+  if (fromHash) pick(fromHash, false);
 })();
 </script>
 </body>

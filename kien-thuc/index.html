@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@600;700;800&display=swap">
-<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/site.css?v=66121c53">
 </head>
 <body>
 <header class="site-head">
@@ -46,38 +46,42 @@
   </section>
   <section class="listing" aria-label="Danh sách bài viết">
     <div class="wrap">
-      <div class="filters" role="group" aria-label="Lọc theo chủ đề">
-        <button class="chip" type="button" data-filter="*" aria-pressed="true">Tất cả</button>
-        <button class="chip" type="button" data-filter="Quản trị tài chính" aria-pressed="false">Quản trị tài chính</button>
-        <button class="chip" type="button" data-filter="CFO &amp; Chiến lược" aria-pressed="false">CFO &amp; Chiến lược</button>
-        <button class="chip" type="button" data-filter="Tài chính doanh nghiệp" aria-pressed="false">Tài chính doanh nghiệp</button>
+      <div class="filters" role="group" aria-label="Chủ đề kiến thức">
+        <button class="chip" type="button" data-filter="*" data-slug="" data-desc="Toàn bộ bài viết CMAC chia sẻ cho chủ doanh nghiệp và nhà quản lý, từ tài chính doanh nghiệp, tài chính cá nhân, kế toán – thuế đến vai trò CFO và quản trị chung." aria-pressed="true">Tất cả</button>
+        <button class="chip" type="button" data-filter="Quản trị tài chính doanh nghiệp" data-slug="tai-chinh-doanh-nghiep" data-desc="Nơi CMAC chia sẻ kiến thức quản trị tài chính ở cấp độ doanh nghiệp: quản trị dòng tiền, phân tích báo cáo tài chính, lập ngân sách và kế hoạch tài chính, huy động vốn và tài trợ dự án." aria-pressed="false">Quản trị tài chính doanh nghiệp</button>
+        <button class="chip" type="button" data-filter="Quản trị tài chính cá nhân" data-slug="tai-chinh-ca-nhan" data-desc="Kiến thức giúp chủ doanh nghiệp và người đi làm chủ động tài chính cá nhân: lập kế hoạch tài chính, quản lý thu chi và nợ vay, tách bạch tài chính cá nhân với doanh nghiệp, chuẩn bị cho các mục tiêu dài hạn." aria-pressed="false">Quản trị tài chính cá nhân</button>
+        <button class="chip" type="button" data-filter="Kế toán và Thuế" data-slug="ke-toan-thue" data-desc="Giải thích các vấn đề kế toán và thuế doanh nghiệp thường gặp: tổ chức sổ sách, hóa đơn chứng từ, kê khai và quyết toán thuế, nhận diện và phòng ngừa rủi ro thuế." aria-pressed="false">Kế toán và Thuế</button>
+        <button class="chip" type="button" data-filter="CFO và Chiến lược" data-slug="cfo-chien-luoc" data-desc="Góc nhìn của người làm Giám đốc tài chính: vai trò của CFO, hệ thống báo cáo quản trị và KPI, chiến lược tài chính, tái cấu trúc và chuẩn bị cho các giao dịch lớn như gọi vốn, M&amp;A, IPO." aria-pressed="false">CFO và Chiến lược</button>
+        <button class="chip" type="button" data-filter="Kiến thức quản trị chung" data-slug="quan-tri-chung" data-desc="Kiến thức quản trị dành cho chủ doanh nghiệp và nhà quản lý: tổ chức bộ máy, quy trình và kiểm soát nội bộ, quản trị hiệu suất, ra quyết định dựa trên dữ liệu." aria-pressed="false">Kiến thức quản trị chung</button>
       </div>
+      <p class="topic-note" id="topicNote" aria-live="polite">Toàn bộ bài viết CMAC chia sẻ cho chủ doanh nghiệp và nhà quản lý, từ tài chính doanh nghiệp, tài chính cá nhân, kế toán – thuế đến vai trò CFO và quản trị chung.</p>
       <ul class="cards">
-      <li class="card topic" data-topic="Quản trị tài chính">
+      <li class="card topic" data-topic="Quản trị tài chính doanh nghiệp">
         <div class="body">
-          <span class="tag">Quản trị tài chính</span>
+          <span class="tag">Quản trị tài chính doanh nghiệp</span>
           <h2><a href="/kien-thuc/du-bao-dong-tien-13-tuan/">Dự báo dòng tiền 13 tuần: công cụ giữ an toàn thanh khoản cho doanh nghiệp</a></h2>
           <p>Doanh nghiệp có lãi vẫn có thể thiếu tiền. Bảng dự báo dòng tiền 13 tuần giúp chủ doanh nghiệp nhìn thấy trước những tuần căng thẳng để xử lý kịp thời.</p>
           <span class="meta">14/10/2026 · 3 phút đọc</span>
         </div>
       </li>
-      <li class="card topic" data-topic="CFO &amp; Chiến lược">
+      <li class="card topic" data-topic="CFO và Chiến lược">
         <div class="body">
-          <span class="tag">CFO &amp; Chiến lược</span>
+          <span class="tag">CFO và Chiến lược</span>
           <h2><a href="/kien-thuc/khi-nao-doanh-nghiep-can-cfo-thue-ngoai/">Khi nào doanh nghiệp cần một CFO thuê ngoài?</a></h2>
           <p>Kế toán trưởng giữ cho sổ sách đúng. Giám đốc tài chính giúp doanh nghiệp ra quyết định. Sáu dấu hiệu cho thấy đã đến lúc doanh nghiệp cần vai trò CFO.</p>
           <span class="meta">13/10/2026 · 3 phút đọc</span>
         </div>
       </li>
-      <li class="card topic" data-topic="Tài chính doanh nghiệp">
+      <li class="card topic" data-topic="Quản trị tài chính doanh nghiệp">
         <div class="body">
-          <span class="tag">Tài chính doanh nghiệp</span>
+          <span class="tag">Quản trị tài chính doanh nghiệp</span>
           <h2><a href="/kien-thuc/chuan-bi-ho-so-vay-von-ngan-hang/">Chuẩn bị gì trước khi làm việc với ngân hàng để vay vốn?</a></h2>
           <p>Ngân hàng không chỉ xem tài sản bảo đảm. Năm điều ngân hàng đánh giá và danh sách hồ sơ doanh nghiệp nên chuẩn bị trước khi đề nghị vay vốn.</p>
           <span class="meta">12/10/2026 · 3 phút đọc</span>
         </div>
       </li>
     </ul>
+      <p class="empty" id="topicEmpty" hidden>Bài viết đang được chuẩn bị. Anh/chị có thể <a href="/#lien-he">đặt lịch trao đổi</a> nếu cần CMAC tư vấn ngay về chủ đề này.</p>
     </div>
   </section>
 </main>
@@ -116,12 +120,21 @@
   const b = document.getElementById("menuBtn"), n = document.getElementById("nav");
   b.addEventListener("click", () => { const o = n.classList.toggle("open"); b.setAttribute("aria-expanded", String(o)); });
   n.addEventListener("click", (e) => { if (e.target.tagName === "A") { n.classList.remove("open"); b.setAttribute("aria-expanded", "false"); } });
-  const chips = document.querySelectorAll("[data-filter]");
-  chips.forEach((c) => c.addEventListener("click", () => {
+  // Lọc chủ đề Kiến thức: đổi chú thích, ẩn/hiện bài, ghi #chủ-đề lên địa chỉ để gửi link thẳng
+  const chips = [...document.querySelectorAll("[data-filter]")];
+  const note = document.getElementById("topicNote"), empty = document.getElementById("topicEmpty");
+  function pick(c, push) {
     chips.forEach((x) => x.setAttribute("aria-pressed", String(x === c)));
     const f = c.dataset.filter;
-    document.querySelectorAll("[data-topic]").forEach((el) => { el.hidden = f !== "*" && el.dataset.topic !== f; });
-  }));
+    let shown = 0;
+    document.querySelectorAll("[data-topic]").forEach((el) => { el.hidden = f !== "*" && el.dataset.topic !== f; if (!el.hidden) shown++; });
+    if (note) note.textContent = c.dataset.desc;
+    if (empty) empty.hidden = shown > 0;
+    if (push) history.replaceState(null, "", c.dataset.slug ? "#" + c.dataset.slug : location.pathname);
+  }
+  chips.forEach((c) => c.addEventListener("click", () => pick(c, true)));
+  const fromHash = chips.find((c) => c.dataset.slug && "#" + c.dataset.slug === location.hash);
+  if (fromHash) pick(fromHash, false);
 })();
 </script>
 </body>

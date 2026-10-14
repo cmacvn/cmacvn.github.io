@@ -66,7 +66,9 @@ a { color: inherit; }
 
 /* Danh sách bài */
 .listing { padding-block: clamp(2.5rem, 6vw, 4.5rem); }
-.filters { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 2rem; }
+.filters { display: flex; flex-wrap: wrap; gap: .5rem; }
+.topic-note { margin: 1.1rem 0 2rem; max-width: 50rem; padding-left: 1rem; border-left: 3px solid var(--bronze-hi); font-style: italic; font-size: .9875rem; color: var(--muted); }
+.empty a { color: var(--bronze-lo); }
 .chip { font: 600 .8125rem var(--f-head); color: var(--navy); background: var(--paper); border: 1px solid var(--line); border-radius: 999px; min-height: 2.5rem; padding: 0 1rem; cursor: pointer; }
 .chip:hover { border-color: var(--bronze); }
 .chip[aria-pressed="true"] { background: var(--navy); border-color: var(--navy); color: var(--cream); }

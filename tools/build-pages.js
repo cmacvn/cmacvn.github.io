@@ -23,8 +23,24 @@ const fs = require("fs");
 const path = require("path");
 
 const ROOT = path.resolve(__dirname, "..");
+// Mã phiên bản theo nội dung site.css: đổi CSS là đổi mã, trình duyệt tải bản mới thay vì dùng bộ nhớ đệm
+const CSS_VERSION = require("crypto").createHash("md5").update(fs.readFileSync(path.join(ROOT, "assets", "site.css"))).digest("hex").slice(0, 8);
 const SITE = "https://cmac.vn";
-const TOPICS = ["Kế toán & Thuế", "Quản trị tài chính", "CFO & Chiến lược", "Tài chính doanh nghiệp"];
+// Chủ đề con của Kiến thức: tên (dùng trong "topic" của bài), đường dẫn #slug, chú thích hiển thị in nghiêng
+const TOPICS = [
+  { name: "Quản trị tài chính doanh nghiệp", slug: "tai-chinh-doanh-nghiep",
+    desc: "Nơi CMAC chia sẻ kiến thức quản trị tài chính ở cấp độ doanh nghiệp: quản trị dòng tiền, phân tích báo cáo tài chính, lập ngân sách và kế hoạch tài chính, huy động vốn và tài trợ dự án." },
+  { name: "Quản trị tài chính cá nhân", slug: "tai-chinh-ca-nhan",
+    desc: "Kiến thức giúp chủ doanh nghiệp và người đi làm chủ động tài chính cá nhân: lập kế hoạch tài chính, quản lý thu chi và nợ vay, tách bạch tài chính cá nhân với doanh nghiệp, chuẩn bị cho các mục tiêu dài hạn." },
+  { name: "Kế toán và Thuế", slug: "ke-toan-thue",
+    desc: "Giải thích các vấn đề kế toán và thuế doanh nghiệp thường gặp: tổ chức sổ sách, hóa đơn chứng từ, kê khai và quyết toán thuế, nhận diện và phòng ngừa rủi ro thuế." },
+  { name: "CFO và Chiến lược", slug: "cfo-chien-luoc",
+    desc: "Góc nhìn của người làm Giám đốc tài chính: vai trò của CFO, hệ thống báo cáo quản trị và KPI, chiến lược tài chính, tái cấu trúc và chuẩn bị cho các giao dịch lớn như gọi vốn, M&A, IPO." },
+  { name: "Kiến thức quản trị chung", slug: "quan-tri-chung",
+    desc: "Kiến thức quản trị dành cho chủ doanh nghiệp và nhà quản lý: tổ chức bộ máy, quy trình và kiểm soát nội bộ, quản trị hiệu suất, ra quyết định dựa trên dữ liệu." },
+];
+const ALL_TOPICS_DESC = "Toàn bộ bài viết CMAC chia sẻ cho chủ doanh nghiệp và nhà quản lý, từ tài chính doanh nghiệp, tài chính cá nhân, kế toán – thuế đến vai trò CFO và quản trị chung.";
+const topicOf = (name) => TOPICS.find((t) => t.name === name);
 
 const SECTIONS = {
   "kien-thuc": {
@@ -56,7 +72,7 @@ function loadPosts(section) {
     if (!m) throw new Error(`${section}/${f}: thiếu khối JSON ở đầu file`);
     const meta = JSON.parse(m[1]);
     for (const k of ["title", "date", "excerpt"]) if (!meta[k]) throw new Error(`${section}/${f}: thiếu "${k}"`);
-    if (section === "kien-thuc" && !TOPICS.includes(meta.topic)) throw new Error(`${section}/${f}: topic phải là một trong ${TOPICS.join(", ")}`);
+    if (section === "kien-thuc" && !topicOf(meta.topic)) throw new Error(`${section}/${f}: topic phải là một trong: ${TOPICS.map((t) => t.name).join(" | ")}`);
     const body = raw.slice(m[0].length).trim();
     return { ...meta, slug: f.replace(/\.html$/, ""), section, body, url: `/${section}/${f.replace(/\.html$/, "")}/`, minutes: readMinutes(body) };
   }).sort((a, b) => b.date.localeCompare(a.date));
@@ -87,7 +103,7 @@ function head({ title, desc, url, image, type = "website" }) {
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@600;700;800&display=swap">
-<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/site.css?v=${CSS_VERSION}">
 </head>
 <body>`;
 }
@@ -141,12 +157,21 @@ const FOOTER = `
   const b = document.getElementById("menuBtn"), n = document.getElementById("nav");
   b.addEventListener("click", () => { const o = n.classList.toggle("open"); b.setAttribute("aria-expanded", String(o)); });
   n.addEventListener("click", (e) => { if (e.target.tagName === "A") { n.classList.remove("open"); b.setAttribute("aria-expanded", "false"); } });
-  const chips = document.querySelectorAll("[data-filter]");
-  chips.forEach((c) => c.addEventListener("click", () => {
+  // Lọc chủ đề Kiến thức: đổi chú thích, ẩn/hiện bài, ghi #chủ-đề lên địa chỉ để gửi link thẳng
+  const chips = [...document.querySelectorAll("[data-filter]")];
+  const note = document.getElementById("topicNote"), empty = document.getElementById("topicEmpty");
+  function pick(c, push) {
     chips.forEach((x) => x.setAttribute("aria-pressed", String(x === c)));
     const f = c.dataset.filter;
-    document.querySelectorAll("[data-topic]").forEach((el) => { el.hidden = f !== "*" && el.dataset.topic !== f; });
-  }));
+    let shown = 0;
+    document.querySelectorAll("[data-topic]").forEach((el) => { el.hidden = f !== "*" && el.dataset.topic !== f; if (!el.hidden) shown++; });
+    if (note) note.textContent = c.dataset.desc;
+    if (empty) empty.hidden = shown > 0;
+    if (push) history.replaceState(null, "", c.dataset.slug ? "#" + c.dataset.slug : location.pathname);
+  }
+  chips.forEach((c) => c.addEventListener("click", () => pick(c, true)));
+  const fromHash = chips.find((c) => c.dataset.slug && "#" + c.dataset.slug === location.hash);
+  if (fromHash) pick(fromHash, false);
 })();
 </script>
 </body>
@@ -168,13 +193,14 @@ function cardHtml(p, headingTag = "h2") {
 }
 function listingPage(section, posts) {
   const s = SECTIONS[section];
-  const topics = section === "kien-thuc" ? TOPICS.filter((t) => posts.some((p) => p.topic === t)) : [];
-  const filters = topics.length > 1
-    ? `<div class="filters" role="group" aria-label="Lọc theo chủ đề">
-        <button class="chip" type="button" data-filter="*" aria-pressed="true">Tất cả</button>
-        ${topics.map((t) => `<button class="chip" type="button" data-filter="${esc(t)}" aria-pressed="false">${esc(t)}</button>`).join("\n        ")}
-      </div>` : "";
-  const list = posts.length ? `<ul class="cards">\n      ${posts.map((p) => cardHtml(p)).join("\n      ")}\n    </ul>` : `<p class="empty">${s.empty}</p>`;
+  const filters = section === "kien-thuc"
+    ? `<div class="filters" role="group" aria-label="Chủ đề kiến thức">
+        <button class="chip" type="button" data-filter="*" data-slug="" data-desc="${esc(ALL_TOPICS_DESC)}" aria-pressed="true">Tất cả</button>
+        ${TOPICS.map((t) => `<button class="chip" type="button" data-filter="${esc(t.name)}" data-slug="${t.slug}" data-desc="${esc(t.desc)}" aria-pressed="false">${esc(t.name)}</button>`).join("\n        ")}
+      </div>
+      <p class="topic-note" id="topicNote" aria-live="polite">${esc(ALL_TOPICS_DESC)}</p>` : "";
+  const list = posts.length ? `<ul class="cards">\n      ${posts.map((p) => cardHtml(p)).join("\n      ")}\n    </ul>` : "";
+  const empty = `<p class="empty" id="topicEmpty"${posts.length ? " hidden" : ""}>${s.empty} Anh/chị có thể <a href="/#lien-he">đặt lịch trao đổi</a> nếu cần CMAC tư vấn ngay về chủ đề này.</p>`;
   return head({ title: `${s.name} | CMAC – Tư vấn Tài chính & Quản trị`, desc: s.metaDesc, url: `/${section}/` }) + header(`/${section}/`) + `
 <main>
   <section class="page-hero">
@@ -188,6 +214,7 @@ function listingPage(section, posts) {
     <div class="wrap">
       ${filters}
       ${list}
+      ${empty}
     </div>
   </section>
 </main>` + FOOTER;
@@ -207,7 +234,7 @@ function articlePage(p, siblings) {
 <main>
   <section class="page-hero">
     <div class="wrap">
-      <nav class="crumbs" aria-label="Đường dẫn"><a href="/">Trang chủ</a><span aria-hidden="true">/</span><a href="/${p.section}/">${s.name}</a><span aria-hidden="true">/</span><span>${esc(label)}</span></nav>
+      <nav class="crumbs" aria-label="Đường dẫn"><a href="/">Trang chủ</a><span aria-hidden="true">/</span><a href="/${p.section}/">${s.name}</a><span aria-hidden="true">/</span>${p.section === "kien-thuc" ? `<a href="/kien-thuc/#${topicOf(p.topic).slug}">${esc(label)}</a>` : `<span>${esc(label)}</span>`}</nav>
       <h1>${esc(p.title)}</h1>
       <div class="meta-line"><span>${fmtDate(p.date)}</span><span>${esc(label)}</span><span>${p.minutes} phút đọc</span>${p.author ? `<span>${esc(p.author)}</span>` : ""}</div>
     </div>
