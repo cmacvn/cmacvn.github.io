@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 630px; }
+  body {
+    position: relative; overflow: hidden;
+    background: radial-gradient(ellipse 70% 80% at 50% 38%, #FBF9F6 0%, #F5F1EC 60%, #EFE8E0 100%);
+    font-family: "Inter", sans-serif; color: #1B2A41;
+    -webkit-font-smoothing: antialiased;
+  }
+  .peaks { position: absolute; left: 0; right: 0; bottom: 72px; width: 1200px; height: 230px; }
+  .frame { position: absolute; inset: 26px 26px 98px 26px; border: 1px solid rgba(140,101,74,.35); }
+  .wrap { position: absolute; top: 0; left: 0; right: 0; height: 558px;
+          display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+  .logo { width: 540px; height: auto; display: block; }
+  .rule { width: 72px; height: 3px; background: linear-gradient(90deg, #67482E, #A78260, #67482E); margin: 30px 0 26px; }
+  h1 { font-family: "Montserrat", sans-serif; font-weight: 700; font-size: 40px; line-height: 1.22; letter-spacing: -.2px; color: #1B2A41; }
+  .svc { margin-top: 20px; font-size: 21px; font-weight: 500; color: #5A4A3E; letter-spacing: .1px; }
+  .svc i { font-style: normal; color: #A78260; padding: 0 10px; }
+  .band { position: absolute; left: 0; right: 0; bottom: 0; height: 72px; background: #1B2A41;
+          display: flex; align-items: center; justify-content: space-between; padding: 0 56px; color: #F5F1EC; }
+  .band::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #67482E, #A78260 50%, #67482E); }
+  .url { font-family: "Montserrat", sans-serif; font-weight: 700; font-size: 26px; letter-spacing: .5px; color: #C9A47F; }
+  .addr { font-size: 19px; font-weight: 400; color: #D9CFC4; }
+</style>
+</head>
+<body>
+  <!-- Mẫu ảnh chia sẻ link 1200×630. Sửa chữ tại đây, mở bằng Chrome cỡ cửa sổ 1200×630 rồi chụp lại, lưu thành assets/og-cmac.jpg -->
+  <!-- Bậc núi mờ phía sau: lặp lại hình núi của biểu tượng M–A, không cạnh tranh với logo -->
+  <svg class="peaks" viewBox="0 0 1200 230" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 230 L0 170 L150 90 L260 150 L420 40 L560 140 L640 110 L780 20 L930 130 L1040 70 L1200 160 L1200 230 Z" fill="#E9E0D6" opacity=".55"/>
+    <path d="M0 230 L0 200 L180 130 L320 190 L470 110 L600 180 L760 90 L900 175 L1060 120 L1200 190 L1200 230 Z" fill="#E2D7CB" opacity=".55"/>
+  </svg>
+  <div class="frame"></div>
+  <div class="wrap">
+    <img class="logo" src="../assets/cmac-logo.png" alt="">
+    <div class="rule"></div>
+    <h1>Đối tác Tài chính &amp; Quản trị<br>cho tăng trưởng bền vững</h1>
+    <p class="svc">Kế toán – Thuế<i>·</i>Quản trị tài chính<i>·</i>CFO thuê ngoài<i>·</i>Tài chính doanh nghiệp</p>
+  </div>
+  <div class="band">
+    <span class="url">cmac.vn</span>
+    <span class="addr">814 Trần Hưng Đạo, Đà Nẵng</span>
+  </div>
+</body>
+</html>

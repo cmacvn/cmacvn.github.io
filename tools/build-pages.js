@@ -79,6 +79,9 @@ function loadPosts(section) {
 }
 
 // ---------- khung trang dùng chung ----------
+// Ảnh xem trước khi chia sẻ link (Zalo, Facebook, LinkedIn…): 1200×630. Bài có "cover" thì dùng ảnh bìa riêng.
+const OG_IMAGE = "/assets/og-cmac.jpg";
+const OG_IMAGE_ALT = "CMAC – Đối tác Tài chính &amp; Quản trị cho tăng trưởng bền vững";
 const NAV = [
   ["/#dich-vu", "Dịch vụ"], ["/#cfo", "CFO thuê ngoài"], ["/#khach-hang", "Khách hàng"], ["/#cach-lam-viec", "Cách làm việc"],
   ["/kien-thuc/", "Kiến thức"], ["/tin-tuc/", "Tin tức"], ["/#ve-cmac", "Về CMAC"],
@@ -97,7 +100,14 @@ function head({ title, desc, url, image, type = "website" }) {
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(desc)}">
 <meta property="og:url" content="${SITE}${url}">
-<meta property="og:image" content="${SITE}${image || "/assets/cmac-logo.png"}">
+<meta property="og:site_name" content="CMAC">
+<meta property="og:image" content="${SITE}${image || OG_IMAGE}">${image ? "" : `
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">`}
+<meta property="og:image:alt" content="${image ? esc(title) : OG_IMAGE_ALT}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="${SITE}${image || OG_IMAGE}">
 <meta name="theme-color" content="#2A1F1A">
 <link rel="icon" type="image/png" href="/assets/cmac-mark-v2.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
