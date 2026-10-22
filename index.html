@@ -720,7 +720,7 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--bronze-hi);
         <p class="lede">Cho CMAC biết doanh nghiệp đang ở đâu và anh/chị muốn đi đến đâu. Từ đó, hai bên thống nhất bước đi đầu tiên phù hợp.</p>
         <div class="channels">
           <div><div class="ch-label">Điện thoại / Zalo</div><div class="ch-row"><span class="ch-val num" id="phone">0839 10 09 26</span><a class="btn-zalo" href="https://zalo.me/0839100926" target="_blank" rel="noopener">Nhắn Zalo</a><button class="copy" type="button" data-copy="phone">Sao chép</button></div></div>
-          <div><div class="ch-label">Email</div><div class="ch-row"><span class="ch-val" id="email">Ceo.cmac@gmail.com</span><button class="copy" type="button" data-copy="email">Sao chép</button></div></div>
+          <div><div class="ch-label">Email</div><div class="ch-row"><span class="ch-val" id="email">ceo@cmac.vn</span><button class="copy" type="button" data-copy="email">Sao chép</button></div></div>
           <div><div class="ch-label">Văn phòng</div><div class="ch-row"><span class="ch-val sm">814 Trần Hưng Đạo, Phường Điện Bàn Đông, Thành phố Đà Nẵng</span></div></div>
         </div>
       </div>
@@ -758,7 +758,7 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--bronze-hi);
         <button class="btn btn-bronze" type="submit" id="submitBtn">Gửi yêu cầu</button>
         <p class="form-error" id="formError" hidden></p>
         <div class="result" id="result" hidden aria-live="polite">
-          <p id="resultMsg">Sao chép nội dung dưới đây và gửi tới CMAC qua Zalo <strong class="num">0839 10 09 26</strong> hoặc email <strong>Ceo.cmac@gmail.com</strong>.</p>
+          <p id="resultMsg">Sao chép nội dung dưới đây và gửi tới CMAC qua Zalo <strong class="num">0839 10 09 26</strong> hoặc email <strong>ceo@cmac.vn</strong>.</p>
           <pre id="summary"></pre>
           <div class="ch-row"><button class="btn btn-line" type="button" id="copySummary">Sao chép nội dung</button><a class="btn-zalo" href="https://zalo.me/0839100926" target="_blank" rel="noopener">Mở Zalo CMAC</a></div>
         </div>
@@ -792,7 +792,7 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--bronze-hi);
       <h4>Liên hệ</h4>
       <ul>
         <li class="num">0839 10 09 26</li>
-        <li>Ceo.cmac@gmail.com</li>
+        <li>ceo@cmac.vn</li>
         <li>814 Trần Hưng Đạo, P. Điện Bàn Đông, TP. Đà Nẵng</li>
       </ul>
     </div>
@@ -925,7 +925,7 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--bronze-hi);
     if (v.website) return; // bẫy spam
 
     if (!FORM_ENDPOINT) {
-      showCopyFallback(v, 'Sao chép nội dung dưới đây và gửi tới CMAC qua Zalo <strong class="num">0839 10 09 26</strong> hoặc email <strong>Ceo.cmac@gmail.com</strong>.');
+      showCopyFallback(v, 'Sao chép nội dung dưới đây và gửi tới CMAC qua Zalo <strong class="num">0839 10 09 26</strong> hoặc email <strong>ceo@cmac.vn</strong>.');
       return;
     }
 
@@ -944,7 +944,7 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--bronze-hi);
       submitBtn.textContent = "Gửi lại yêu cầu";
       formError.textContent = "Chưa gửi được yêu cầu do lỗi kết nối. Anh/chị bấm gửi lại, hoặc sao chép nội dung bên dưới và nhắn Zalo cho CMAC.";
       formError.hidden = false;
-      showCopyFallback(v, 'Nội dung yêu cầu của anh/chị. Gửi qua Zalo <strong class="num">0839 10 09 26</strong> hoặc email <strong>Ceo.cmac@gmail.com</strong>.');
+      showCopyFallback(v, 'Nội dung yêu cầu của anh/chị. Gửi qua Zalo <strong class="num">0839 10 09 26</strong> hoặc email <strong>ceo@cmac.vn</strong>.');
     }
   });
   document.getElementById("copySummary").addEventListener("click", (e) => copyText(document.getElementById("summary").textContent, e.currentTarget));
